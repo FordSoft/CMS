@@ -24,6 +24,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Web;
 using Kooboo.CMS.Common;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Sites.Models
 {
@@ -216,6 +217,15 @@ namespace Kooboo.CMS.Sites.Models
         {
             get
             {
+                if (Parent == null)
+                {
+                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                    if (environment != null && !string.IsNullOrWhiteSpace(environment.ChildSitesBasePhysicalPath))
+                    {
+                        return Path.Combine(environment.ChildSitesBasePhysicalPath, PATH_NAME);
+                    }
+                }
+
                 return Path.Combine(this.PhysicalPath, PATH_NAME);
             }
         }
@@ -238,18 +248,30 @@ namespace Kooboo.CMS.Sites.Models
                 return Path.Combine(baseDir.Cms_DataPhysicalPath, PATH_NAME);
             }
         }
+
         public static readonly string PATH_NAME = "Sites";
 
         public override string BasePhysicalPath
         {
             get
             {
+                //Root
+                //
                 if (Parent == null)
                 {
                     return RootBasePhysicalPath;
                 }
+                //childs
+                //
                 else
                 {
+
+                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                    if (environment != null && !string.IsNullOrWhiteSpace(environment.ChildSitesBasePhysicalPath))
+                    {
+                        return Path.Combine(environment.ChildSitesBasePhysicalPath, PATH_NAME);
+                    }
+
                     return Path.Combine(Parent.PhysicalPath, PATH_NAME);
                 }
             }
@@ -264,6 +286,12 @@ namespace Kooboo.CMS.Sites.Models
                 }
                 else
                 {
+                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                    if (environment != null && !string.IsNullOrWhiteSpace(environment.BaseVirtualPath))
+                    {
+                        return UrlUtility.Combine(environment.BaseVirtualPath, PATH_NAME);
+                    }
+
                     return UrlUtility.Combine(Parent.VirtualPath, PATH_NAME);
                 }
 
@@ -423,7 +451,21 @@ namespace Kooboo.CMS.Sites.Models
         }
         public string DataFile
         {
-            get { return Path.Combine(this.PhysicalPath, SettingFileName); }
+            get
+            {
+                //Root site
+                //
+                if (parent == null)
+                {
+                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                    if (environment != null && !string.IsNullOrWhiteSpace(environment.RootDataFile))
+                    {
+                        return Path.Combine(environment.RootDataFile, SettingFileName);
+                    }
+                }
+
+                return Path.Combine(this.PhysicalPath, SettingFileName);
+            }
         }
 
         void IPersistable.OnSaving()

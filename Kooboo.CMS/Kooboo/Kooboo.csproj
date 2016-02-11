@@ -143,6 +143,7 @@
     <Compile Include="CultureInfoHelper.cs" />
     <Compile Include="Diagnostics\LoopWatch.cs" />
     <Compile Include="Drawing\WebPageCapture_DefaultProvider.cs" />
+    <Compile Include="Extended\PathUtils.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="FileExtensions.cs" />
@@ -186,9 +187,7 @@
     <Compile Include="ServiceProcess\Commands\InstallCommand.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ServiceProcess\Commands\ServiceCommand.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="ServiceProcess\Commands\ServiceCommand.cs" />
     <Compile Include="ServiceProcess\Commands\UninstallCommand.cs">
       <SubType>Code</SubType>
     </Compile>

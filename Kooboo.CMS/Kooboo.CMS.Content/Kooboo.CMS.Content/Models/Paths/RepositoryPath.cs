@@ -12,8 +12,10 @@ using System.Linq;
 using System.Text;
 using Kooboo.CMS.Content.Models;
 using System.IO;
+using System.Web;
 using Kooboo.Web.Url;
 using Kooboo.CMS.Common;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Content.Models.Paths
 {
@@ -30,10 +32,19 @@ namespace Kooboo.CMS.Content.Models.Paths
         }
         public RepositoryPath(Repository repository)
         {
-            this.PhysicalPath = Path.Combine(BasePhysicalPath, repository.Name);
-            this.VirtualPath = UrlUtility.Combine(BaseVirtualPath, repository.Name);
-            this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
-
+            var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+            if (environment != null)
+            {
+                this.PhysicalPath = environment.ContentPath; //Path.Combine(, repository.Name);
+                this.VirtualPath = environment.ContentVirtualPath; //UrlUtility.Combine(BaseVirtualPath, repository.Name);
+                this.SettingFile = Path.Combine(environment.ContentPath, PathHelper.SettingFileName);
+            }
+            else
+            {
+                this.PhysicalPath = Path.Combine(BasePhysicalPath, repository.Name);
+                this.VirtualPath = UrlUtility.Combine(BaseVirtualPath, repository.Name);
+                this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
+            }
         }
 
         #region IPath Members

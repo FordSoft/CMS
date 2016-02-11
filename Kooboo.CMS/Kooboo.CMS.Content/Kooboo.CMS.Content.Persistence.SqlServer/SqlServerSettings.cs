@@ -13,6 +13,9 @@ using System.Text;
 using System.IO;
 using Kooboo.Runtime.Serialization;
 using System.Runtime.Serialization;
+using System.Web;
+using Kooboo.Extended;
+
 namespace Kooboo.CMS.Content.Persistence.SqlServer
 {
     public class ConnectionSetting
@@ -48,9 +51,19 @@ namespace Kooboo.CMS.Content.Persistence.SqlServer
         }
         private static string GetSettingFile()
         {
-            var filePath = Path.Combine(Kooboo.Settings.BaseDirectory, "SqlServer.config");
+            var r = HttpContext.Current.Request;
+            var baseDirectory = Kooboo.Settings.BaseDirectory;
+
+            var environmet = PathUtils.GetDeployEnvironment(HttpContext.Current);
+            if (environmet != null && !string.IsNullOrWhiteSpace(environmet.SqlServerConfigBaseDirectory))
+            {
+                baseDirectory = environmet.SqlServerConfigBaseDirectory;
+            }
+
+            var filePath = Path.Combine(baseDirectory, "SqlServer.config");
             if (!File.Exists(filePath))
-                filePath = Path.Combine(Kooboo.Settings.BinDirectory, "SqlServer.config");
+                filePath = Path.Combine(baseDirectory, "SqlServer.config");
+
             return filePath;
         }
         public static SqlServerSettings Instance

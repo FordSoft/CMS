@@ -2193,4 +2193,409 @@ Microsoft ResX Schema
   <data name="Goto" xml:space="preserve">
     <value>Перейти</value>
   </data>
+  <data name="Not Found - Kooboo CMS" xml:space="preserve">
+    <value>Not Found - Kooboo CMS</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="If you see this page, it means that Kooboo CMS has been installed on this server." xml:space="preserve">
+    <value>If you see this page, it means that Kooboo CMS has been installed on this server.</value>
+  </data>
+  <data name="The requested URL was not found on this server. These could be the following reasons." xml:space="preserve">
+    <value>The requested URL was not found on this server. These could be the following reasons.</value>
+  </data>
+  <data name="You might have typed the URL incorrectly" xml:space="preserve">
+    <value>You might have typed the URL incorrectly</value>
+  </data>
+  <data name="Your page has been moved" xml:space="preserve">
+    <value>Your page has been moved</value>
+  </data>
+  <data name="You haven't created your Kooboo website yet. Please &lt;a href='{0}'&gt;login&lt;/a&gt; and create your first Kooboo website." xml:space="preserve">
+    <value>You haven't created your Kooboo website yet. Please &lt;a href='{0}'&gt;login&lt;/a&gt; and create your first Kooboo website.</value>
+  </data>
+  <data name="Требуется поле Remember me." xml:space="preserve">
+    <value>Требуется поле Remember me.</value>
+  </data>
+  <data name="Back to home page" xml:space="preserve">
+    <value>Back to home page</value>
+  </data>
+  <data name="For a list of newly added features and a quick start guide,&lt;br /&gt;See: &lt;a href=&quot;http://www.kooboo.com/documents&quot; target=&quot;_blank&quot;&gt;http://www.kooboo.com/documents&lt;/a&gt;" xml:space="preserve">
+    <value>For a list of newly added features and a quick start guide,&lt;br /&gt;See: &lt;a href="http://www.kooboo.com/documents" target="_blank"&gt;http://www.kooboo.com/documents&lt;/a&gt;</value>
+  </data>
+  <data name="Sign in to the CMS and create your first Kooboo website, the default login is: &lt;strong&gt;admin/admin&lt;/strong&gt;" xml:space="preserve">
+    <value>Sign in to the CMS and create your first Kooboo website, the default login is: &lt;strong&gt;admin/admin&lt;/strong&gt;</value>
+  </data>
+  <data name="Username and/or password are incorrect." xml:space="preserve">
+    <value>Username and/or password are incorrect.</value>
+  </data>
+  <data name="Is administrator" xml:space="preserve">
+    <value>Is administrator</value>
+  </data>
+  <data name="Is locked out" xml:space="preserve">
+    <value>Is locked out</value>
+  </data>
+  <data name="Global roles" xml:space="preserve">
+    <value>Global roles</value>
+  </data>
+  <data name="-" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="New user" xml:space="preserve">
+    <value>New user</value>
+  </data>
+  <data name="Set as default page" xml:space="preserve">
+    <value>Set as default page</value>
+  </data>
+  <data name="Change language" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="Security Setting" xml:space="preserve">
+    <value>Security Setting</value>
+  </data>
+  <data name="All your changes might be lost." xml:space="preserve">
+    <value>All your changes might be lost.</value>
+  </data>
+  <data name="Site cluster" xml:space="preserve">
+    <value>Site cluster</value>
+  </data>
+  <data name="New sub site" xml:space="preserve">
+    <value>New sub site</value>
+  </data>
+  <data name="Import database" xml:space="preserve">
+    <value>Import database</value>
+  </data>
+  <data name="The parent website which this new website will be based on." xml:space="preserve">
+    <value>The parent website which this new website will be based on.</value>
+  </data>
+  <data name="A new site" xml:space="preserve">
+    <value>A new site</value>
+  </data>
+  <data name="A new subsite" xml:space="preserve">
+    <value>A new subsite</value>
+  </data>
+  <data name="Relation" xml:space="preserve">
+    <value>Relation</value>
+  </data>
+  <data name="Memberships" xml:space="preserve">
+    <value>Memberships</value>
+  </data>
+  <data name="Site templates" xml:space="preserve">
+    <value>Site templates</value>
+  </data>
+  <data name="Site level A/B Test" xml:space="preserve">
+    <value>Site level A/B Test</value>
+  </data>
+  <data name="A/B rules" xml:space="preserve">
+    <value>A/B rules</value>
+  </data>
+  <data name="A/B site settings" xml:space="preserve">
+    <value>A/B site settings</value>
+  </data>
+  <data name="Unpublished page" xml:space="preserve">
+    <value>Unpublished page</value>
+  </data>
+  <data name="Inherited page" xml:space="preserve">
+    <value>Inherited page</value>
+  </data>
+  <data name="A/B Testing" xml:space="preserve">
+    <value>A/B Testing</value>
+  </data>
+  <data name="Unsynchronized page" xml:space="preserve">
+    <value>Unsynchronized page</value>
+  </data>
+  <data name="Diagnosis" xml:space="preserve">
+    <value>Diagnosis</value>
+  </data>
+  <data name="A/B Test" xml:space="preserve">
+    <value>A/B Test</value>
+  </data>
+  <data name="A/B page settings" xml:space="preserve">
+    <value>A/B page settings</value>
+  </data>
+  <data name="A/B test reports" xml:space="preserve">
+    <value>A/B test reports</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="Web resource" xml:space="preserve">
+    <value>Web resource</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="Select the database where &lt;br/&gt; your content is stored or create a new database." xml:space="preserve">
+    <value>Select the database where &lt;br/&gt; your content is stored or create a new database.</value>
+  </data>
+  <data name="Select a membership data source for the site." xml:space="preserve">
+    <value>Select a membership data source for the site.</value>
+  </data>
+  <data name="Membership" xml:space="preserve">
+    <value>Membership</value>
+  </data>
+  <data name="The culture shown on your website. &lt;br /&gt; This is used to display currency, date, number and other culture related content." xml:space="preserve">
+    <value>The culture shown on your website. &lt;br /&gt; This is used to display currency, date, number and other culture related content.</value>
+  </data>
+  <data name="Time zone" xml:space="preserve">
+    <value>Time zone</value>
+  </data>
+  <data name="Shows the sitemap as the start page in the menu." xml:space="preserve">
+    <value>Shows the sitemap as the start page in the menu.</value>
+  </data>
+  <data name="Enable version control on Layout, View and Page." xml:space="preserve">
+    <value>Enable version control on Layout, View and Page.</value>
+  </data>
+  <data name="The virtual path of your website. You may create a subsite eg. www.kooboo.com/china, &lt;b&gt;china&lt;/b&gt; is the Site path." xml:space="preserve">
+    <value>The virtual path of your website. You may create a subsite eg. www.kooboo.com/china, &lt;b&gt;china&lt;/b&gt; is the Site path.</value>
+  </data>
+  <data name="Site path" xml:space="preserve">
+    <value>Site path</value>
+  </data>
+  <data name="Used to create sites for special devices only, you can define regex expression to match the Browser User-Agent.&lt;br /&gt;Only matched devices are allowed to view this site." xml:space="preserve">
+    <value>Used to create sites for special devices only, you can define regex expression to match the Browser User-Agent.&lt;br /&gt;Only matched devices are allowed to view this site.</value>
+  </data>
+  <data name="Example:" xml:space="preserve">
+    <value>Example:</value>
+  </data>
+  <data name="Mobiles" xml:space="preserve">
+    <value>Mobiles</value>
+  </data>
+  <data name="Android" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="iPhone" xml:space="preserve">
+    <value>iPhone</value>
+  </data>
+  <data name="iPad" xml:space="preserve">
+    <value>iPad</value>
+  </data>
+  <data name="IE" xml:space="preserve">
+    <value>IE</value>
+  </data>
+  <data name="Firefox" xml:space="preserve">
+    <value>Firefox</value>
+  </data>
+  <data name="Chrome" xml:space="preserve">
+    <value>Chrome</value>
+  </data>
+  <data name="Safari/Windows" xml:space="preserve">
+    <value>Safari/Windows</value>
+  </data>
+  <data name="Safari/Mac" xml:space="preserve">
+    <value>Safari/Mac</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="Alternate SSL detection via HTTP header, please fill in http header name and value. &lt;a href='https://github.com/plack/Plack/wiki/How-to-detect-reverse-proxy-and-SSL-frontend' target='_blank'&gt;Click&lt;/a&gt; for more." xml:space="preserve">
+    <value>Alternate SSL detection via HTTP header, please fill in http header name and value. &lt;a href='https://github.com/plack/Plack/wiki/How-to-detect-reverse-proxy-and-SSL-frontend' target='_blank'&gt;Click&lt;/a&gt; for more.</value>
+  </data>
+  <data name="Alternate SSL detection" xml:space="preserve">
+    <value>Alternate SSL detection</value>
+  </data>
+  <data name="Give your website a version number, it can be any number as you like." xml:space="preserve">
+    <value>Give your website a version number, it can be any number as you like.</value>
+  </data>
+  <data name="Use &lt;b&gt;debug&lt;/b&gt; on development and use &lt;b&gt;release&lt;/b&gt; on live site. &lt;b&gt;Release&lt;/b&gt; mode utilizes CSS/JS compression and other techniques." xml:space="preserve">
+    <value>Use &lt;b&gt;debug&lt;/b&gt; on development and use &lt;b&gt;release&lt;/b&gt; on live site. &lt;b&gt;Release&lt;/b&gt; mode utilizes CSS/JS compression and other techniques.</value>
+  </data>
+  <data name="Enables you to edit content from the front end of your website." xml:space="preserve">
+    <value>Enables you to edit content from the front end of your website.</value>
+  </data>
+  <data name="Load JQuery and JQuery validation files." xml:space="preserve">
+    <value>Load JQuery and JQuery validation files.</value>
+  </data>
+  <data name="The FROM email address of emails sent out by the system. For example: user registration confirmation email." xml:space="preserve">
+    <value>The FROM email address of emails sent out by the system. For example: user registration confirmation email.</value>
+  </data>
+  <data name="Used in SEO, see: http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html" xml:space="preserve">
+    <value>Used in SEO, see: http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html</value>
+  </data>
+  <data name="Canonical" xml:space="preserve">
+    <value>Canonical</value>
+  </data>
+  <data name="Can input any text what you want to render in the HTML HEAD. For example: &lt;/br&gt; &amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;{Title}&amp;quot;&amp;gt;&amp;lt;meta http-equiv=&amp;quot;charset&amp;quot; content=&amp;quot;{Charset}&amp;quot;&amp;gt;" xml:space="preserve">
+    <value>Can input any text what you want to render in the HTML HEAD. For example: &lt;/br&gt; &amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;{Title}&amp;quot;&amp;gt;&amp;lt;meta http-equiv=&amp;quot;charset&amp;quot; content=&amp;quot;{Charset}&amp;quot;&amp;gt;</value>
+  </data>
+  <data name="Meta block" xml:space="preserve">
+    <value>Meta block</value>
+  </data>
+  <data name="Custom fields for HTML meta values" xml:space="preserve">
+    <value>Custom fields for HTML meta values</value>
+  </data>
+  <data name="Поле Encrypt key должно быть строкой с минимальной длиной 8 и максимальной 8." xml:space="preserve">
+    <value>Поле Encrypt key должно быть строкой с минимальной длиной 8 и максимальной 8.</value>
+  </data>
+  <data name="The encrypt key for SecurityHelper.Encrypt/Decrypt." xml:space="preserve">
+    <value>The encrypt key for SecurityHelper.Encrypt/Decrypt.</value>
+  </data>
+  <data name="Encrypt key" xml:space="preserve">
+    <value>Encrypt key</value>
+  </data>
+  <data name="Требуется поле Turn on submission api." xml:space="preserve">
+    <value>Требуется поле Turn on submission api.</value>
+  </data>
+  <data name="Turn on submission api" xml:space="preserve">
+    <value>Turn on submission api</value>
+  </data>
+  <data name=" Turn on/off the content submission API such as ContentService and SendEmail API. The 'ContentService' was obsolete in 4.1 verion, it is recommended to trun off for security reason." xml:space="preserve">
+    <value> Turn on/off the content submission API such as ContentService and SendEmail API. The 'ContentService' was obsolete in 4.1 verion, it is recommended to trun off for security reason.</value>
+  </data>
+  <data name="Custom field values that can be accessed in front end site via API: @Site.Current.CustomFields[&quot;key&quot;]." xml:space="preserve">
+    <value>Custom field values that can be accessed in front end site via API: @Site.Current.CustomFields["key"].</value>
+  </data>
+  <data name="Test SMTP" xml:space="preserve">
+    <value>Test SMTP</value>
+  </data>
+  <data name="New site user" xml:space="preserve">
+    <value>New site user</value>
+  </data>
+  <data name="&quot;User name&quot; является недопустимым." xml:space="preserve">
+    <value>"User name" является недопустимым.</value>
+  </data>
+  <data name="Add an user to your website &lt;br /&gt;The user must be created first." xml:space="preserve">
+    <value>Add an user to your website &lt;br /&gt;The user must be created first.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="-Kooboo CMS" xml:space="preserve">
+    <value>-Kooboo CMS</value>
+  </data>
+  <data name="Status code" xml:space="preserve">
+    <value>Status code</value>
+  </data>
+  <data name="Redirect URL" xml:space="preserve">
+    <value>Redirect URL</value>
+  </data>
+  <data name="Show error path" xml:space="preserve">
+    <value>Show error path</value>
+  </data>
+  <data name="Input URL/Pattern" xml:space="preserve">
+    <value>Input URL/Pattern</value>
+  </data>
+  <data name="Output URL/Pattern" xml:space="preserve">
+    <value>Output URL/Pattern</value>
+  </data>
+  <data name="Regex" xml:space="preserve">
+    <value>Regex</value>
+  </data>
+  <data name="Creation date" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="Lastest modification date" xml:space="preserve">
+    <value>Lastest modification date</value>
+  </data>
+  <data name="Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="UI culture" xml:space="preserve">
+    <value>UI culture</value>
+  </data>
+  <data name="Text content" xml:space="preserve">
+    <value>Text content</value>
+  </data>
+  <data name="Add content" xml:space="preserve">
+    <value>Add content</value>
+  </data>
+  <data name="More..." xml:space="preserve">
+    <value>More...</value>
+  </data>
+  <data name="Are you sure you want to publish these items?" xml:space="preserve">
+    <value>Are you sure you want to publish these items?</value>
+  </data>
+  <data name="Are you sure you want to unpublish these items?" xml:space="preserve">
+    <value>Are you sure you want to unpublish these items?</value>
+  </data>
+  <data name="Re-broadcast" xml:space="preserve">
+    <value>Re-broadcast</value>
+  </data>
+  <data name="Edit a content" xml:space="preserve">
+    <value>Edit a content</value>
+  </data>
+  <data name="Details view" xml:space="preserve">
+    <value>Details view</value>
+  </data>
+  <data name="Thumbnails view" xml:space="preserve">
+    <value>Thumbnails view</value>
+  </data>
+  <data name="FileType" xml:space="preserve">
+    <value>FileType</value>
+  </data>
+  <data name="Invalid folder name." xml:space="preserve">
+    <value>Invalid folder name.</value>
+  </data>
+  <data name="Invalid file name." xml:space="preserve">
+    <value>Invalid file name.</value>
+  </data>
+  <data name="New folder" xml:space="preserve">
+    <value>New folder</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Html blocks" xml:space="preserve">
+    <value>Html blocks</value>
+  </data>
+  <data name="Root" xml:space="preserve">
+    <value>Root</value>
+  </data>
+  <data name="jpg" xml:space="preserve">
+    <value>jpg</value>
+  </data>
+  <data name="Multi-file upload" xml:space="preserve">
+    <value>Multi-file upload</value>
+  </data>
+  <data name="&quot;Name&quot; является недопустимым." xml:space="preserve">
+    <value>"Name" является недопустимым.</value>
+  </data>
+  <data name="Edit image" xml:space="preserve">
+    <value>Edit image</value>
+  </data>
+  <data name="File name" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="Original dimensions" xml:space="preserve">
+    <value>Original dimensions</value>
+  </data>
+  <data name="Image crop" xml:space="preserve">
+    <value>Image crop</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="Alternative text" xml:space="preserve">
+    <value>Alternative text</value>
+  </data>
+  <data name="Drop files here" xml:space="preserve">
+    <value>Drop files here</value>
+  </data>
+  <data name="Import media content" xml:space="preserve">
+    <value>Import media content</value>
+  </data>
+  <data name="Only .zip file is accepted." xml:space="preserve">
+    <value>Only .zip file is accepted.</value>
+  </data>
+  <data name="Will overwrite the exists items." xml:space="preserve">
+    <value>Will overwrite the exists items.</value>
+  </data>
+  <data name="Are you sure you want to localize this item?" xml:space="preserve">
+    <value>Are you sure you want to localize this item?</value>
+  </data>
 </root>

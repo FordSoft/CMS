@@ -37,13 +37,12 @@ namespace Kooboo.CMS.Common
 
         #endregion
 
-        #region Application_Start
+
+        
+    #region Application_Start
         public virtual void Application_Start(object sender, EventArgs e)
         {
-            RunEvents((events) =>
-            {
-                events.Application_Start(sender, e);
-            });
+            
         }
         #endregion
 
@@ -68,8 +67,34 @@ namespace Kooboo.CMS.Common
         #endregion
 
         #region Application_BeginRequest
+
+        private static bool s_InitializedAlready = false;
+        private static Object s_lock = new Object();
+
+        private void InitApplication(object sender, EventArgs e)
+        {
+            if (s_InitializedAlready)
+            {
+                return;
+            }
+            lock (s_lock)
+            {
+                if (s_InitializedAlready)
+                {
+                    return;
+                }
+
+                RunEvents((events) =>
+                {
+                    events.Application_Start(sender, e);
+                });
+                s_InitializedAlready = true;
+            }
+        }
         public virtual void Application_BeginRequest(object sender, EventArgs e)
         {
+            InitApplication(sender, e);
+
             RunEvents((events) =>
             {
                 events.Application_BeginRequest(sender, e);
