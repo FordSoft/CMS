@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Account
 {
@@ -27,7 +29,19 @@ namespace Kooboo.CMS.Account
         public AccountBaseDir(IBaseDir baseDir)
         {
             this.PathName = "Account";
-            this.PhysicalPath = Path.Combine(baseDir.Cms_DataPhysicalPath, this.PathName);
+
+            //C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Cms_Data
+
+            var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+            if (environment != null && !string.IsNullOrWhiteSpace(environment.AccountPath))
+            {
+                this.PhysicalPath = environment.AccountPath;
+            }
+            else
+            {
+                this.PhysicalPath = Path.Combine(baseDir.Cms_DataPhysicalPath, this.PathName);
+            }
+            
         }
         public string PathName
         {
