@@ -217,6 +217,8 @@ namespace Kooboo.CMS.Sites.Models
         {
             get
             {
+                //only root site
+                //
                 if (Parent == null)
                 {
                     var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
@@ -265,13 +267,16 @@ namespace Kooboo.CMS.Sites.Models
                 //
                 else
                 {
-
-                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
-                    if (environment != null && !string.IsNullOrWhiteSpace(environment.ChildSitesBasePhysicalPath))
+                    //only first child
+                    //
+                    if (FullName.Where(k=> k == '~').Count() == 1)
                     {
-                        return Path.Combine(environment.ChildSitesBasePhysicalPath, PATH_NAME);
+                        var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                        if (environment != null && !string.IsNullOrWhiteSpace(environment.ChildSitesBasePhysicalPath))
+                        {
+                            return Path.Combine(environment.ChildSitesBasePhysicalPath, PATH_NAME);
+                        }
                     }
-
                     return Path.Combine(Parent.PhysicalPath, PATH_NAME);
                 }
             }
@@ -286,10 +291,13 @@ namespace Kooboo.CMS.Sites.Models
                 }
                 else
                 {
-                    var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
-                    if (environment != null && !string.IsNullOrWhiteSpace(environment.BaseVirtualPath))
+                    if (FullName.Where(k=> k == '~').Count() == 1)
                     {
-                        return UrlUtility.Combine(environment.BaseVirtualPath, PATH_NAME);
+                        var environment = PathUtils.GetDeployEnvironment(HttpContext.Current);
+                        if (environment != null && !string.IsNullOrWhiteSpace(environment.BaseVirtualPath))
+                        {
+                            return UrlUtility.Combine(environment.BaseVirtualPath, PATH_NAME);
+                        }
                     }
 
                     return UrlUtility.Combine(Parent.VirtualPath, PATH_NAME);
@@ -453,7 +461,7 @@ namespace Kooboo.CMS.Sites.Models
         {
             get
             {
-                //Root site
+                //only root site
                 //
                 if (parent == null)
                 {
