@@ -16,7 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Content.Persistence.Default
 {
@@ -56,6 +58,12 @@ namespace Kooboo.CMS.Content.Persistence.Default
                 foreach (var item in IO.IOUtility.EnumerateDirectoriesExludeHidden(baseDir))
                 {
                     list.Add(new Schema(repository, item.Name));
+                }
+                //links
+                //
+                foreach(var item in Directory.GetFiles(baseDir, "*.lnk"))
+                {
+                    list.Add(new Schema(repository, LinkHelper.ResolveShortcut(item)));
                 }
             }
             return list;

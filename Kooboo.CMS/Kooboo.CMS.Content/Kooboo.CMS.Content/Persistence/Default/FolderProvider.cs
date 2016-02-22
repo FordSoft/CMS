@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Content.Persistence.Default
 {
@@ -63,6 +64,25 @@ namespace Kooboo.CMS.Content.Persistence.Default
                         }
                     }
                 }
+                //link TODO not work
+                //
+                //foreach (var item in Directory.GetFiles(baseDir, "*.lnk"))
+                //{
+                //    var directoryInfo = LinkHelper.GetDirectoryInfo(LinkHelper.ResolveShortcut(item));
+
+                //    var folderName = directoryInfo.Name;
+                //    // Compatible with the ContentFolderName has been change (_contents=>.contents)
+                //    if (string.Compare(folderName, TextContentPath.ContentAttachementFolder, true) != 0)
+                //    {
+                //        var folder = (T)Activator.CreateInstance(typeof(T), repository, folderName);
+                //        folder.Parent = parent;
+                //        folder.UtcCreationDate = directoryInfo.CreationTimeUtc;
+                //        if ((folder is MediaFolder) || (folder is TextFolder && File.Exists(Path.Combine(directoryInfo.FullName, PathHelper.SettingFileName))))
+                //        {
+                //            list.Add(folder);
+                //        }
+                //    }
+                //}
             }
             return list;
         }

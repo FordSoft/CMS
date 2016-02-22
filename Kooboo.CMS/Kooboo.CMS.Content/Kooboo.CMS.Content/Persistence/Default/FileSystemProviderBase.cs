@@ -14,6 +14,7 @@ using System.IO;
 using Kooboo.CMS.Content.Models;
 using Kooboo.CMS.Content.Models.Paths;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Content.Persistence.Default
 {
@@ -34,12 +35,22 @@ namespace Kooboo.CMS.Content.Persistence.Default
         public virtual T Get(T dummy)
         {
             var path = PathFactory.GetPath(dummy);
-            if (File.Exists(path.SettingFile))
+            var settingFile = path.SettingFile;
+
+            //fix link
+            //
+            if (!Directory.Exists(path.PhysicalPath) && File.Exists(path.PhysicalPath + ".lnk"))
+            {
+                var linkPath = LinkHelper.ResolveShortcut(path.PhysicalPath + ".lnk");
+                settingFile = Path.Combine(linkPath, path.SettingFile.Replace(path.PhysicalPath + @"\", ""));
+            }
+
+            if (File.Exists(settingFile))
             {
                 GetLocker().EnterReadLock();
                 try
                 {
-                    var item = (T)Serialization.Deserialize(dummy.GetType(), KnownTypes, path.SettingFile);
+                    var item = (T)Serialization.Deserialize(dummy.GetType(), KnownTypes, settingFile);
                     item.Init(dummy);
                     return item;
                 }
