@@ -28,30 +28,33 @@ namespace Kooboo.Extended
     {
         public static DeployEnvironment GetDeployEnvironment(HttpContext context)
         {
-            var result = new DeployEnvironment();
+            DeployEnvironment result = null;
 
-            switch (context.Request.Url.Port)
+            switch (context.Request.Url.Host)
             {
-                case 81:
+                case "tissot1.brainworks.ru":
+                case "demo1.brainworks.ru":
                     {
-                        result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1";
-                        result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1\Cms_Data";
+                        result = new DeployEnvironment();
+                        result.SqlServerConfigBaseDirectory = @"G:\sales\Web\Config\demo1";
+                        result.ChildSitesBasePhysicalPath = @"G:\sales\Web\Config\demo1\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo1/Cms_Data/";
-                        result.RootDataFile = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1\Cms_Data";
+                        result.RootDataFile = @"G:\sales\Web\Config\demo1\Cms_Data";
                         
                         break;
                     }
-                case 82:
+                case "demo2.brainworks.ru":
                     {
-                        result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2";
-                        result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2\Cms_Data";
+                        result = new DeployEnvironment();
+                        result.SqlServerConfigBaseDirectory = @"G:\sales\Web\Config\demo2";
+                        result.ChildSitesBasePhysicalPath = @"G:\sales\Web\Config\demo2\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo2/Cms_Data/";
-                        result.RootDataFile = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2\Cms_Data";
+                        result.RootDataFile = @"G:\sales\Web\Config\demo2\Cms_Data";
 
                         break;
                     }
             }
-            if (!string.IsNullOrWhiteSpace(result.RootDataFile))
+            if (result != null && !string.IsNullOrWhiteSpace(result.RootDataFile))
             {
                 result.ContentPath = Path.Combine(result.RootDataFile, "Contents");
                 result.ContentVirtualPath = result.BaseVirtualPath + "Contents";
@@ -59,29 +62,6 @@ namespace Kooboo.Extended
 
             }
             return result;
-
-
-            return null;
-            /*
-            switch (context.Request.Url.Host)
-            {
-                case "demo1.brainworks.ru":
-                case "fullips.brainworks.ru":
-                    {
-                        baseDirectory = @"D:\iis\sales\kooboo.web\Development\Kooboo_CMS\Config\demo1";
-                        break;
-                    }
-
-                case "demo2.brainworks.ru":
-                case "byanshi.brainworks.ru":
-                    {
-                        baseDirectory = @"D:\iis\sales\kooboo.web\Development\Kooboo_CMS\Config\demo2";
-                        break;
-                    }
-            }
-            */
-
-            //return result;
         }
     }
 }
