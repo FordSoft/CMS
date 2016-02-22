@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using Kooboo.Web.Url;
 using System.IO;
+using System.Net;
 using Kooboo.CMS.Form;
 
 
@@ -21,11 +22,30 @@ namespace Kooboo.CMS.Content.Models.Paths
     {
         public SchemaPath(Schema schema)
         {
-            RepositoryPath repositoryPath = new RepositoryPath(schema.Repository);
-            var basePhysicalPath = GetBaseDir(schema.Repository);
-            this.PhysicalPath = Path.Combine(basePhysicalPath, schema.Name);
-            this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
-            VirtualPath = UrlUtility.RawCombine(repositoryPath.VirtualPath, PATH_NAME, schema.Name);
+            if (schema == null)
+                return;
+
+            string schemaName = schema.Name;
+
+            //fix link schems
+            //
+            if (schema.Name.Contains(@"\"))
+            {
+                var dir = new DirectoryInfo(schema.Name);
+                schemaName = dir.Name;
+                this.PhysicalPath = schema.Name;
+                this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
+                VirtualPath = UrlUtility.GetVirtualPath(PhysicalPath);
+            }
+            else
+            {
+                RepositoryPath repositoryPath = new RepositoryPath(schema.Repository);
+                var basePhysicalPath = GetBaseDir(schema.Repository);
+                this.PhysicalPath = Path.Combine(basePhysicalPath, schemaName);
+                this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
+
+                VirtualPath = UrlUtility.RawCombine(repositoryPath.VirtualPath, PATH_NAME, schemaName);
+            }
         }
         public static string GetBaseDir(Repository repository)
         {

@@ -43,6 +43,11 @@ namespace Kooboo.CMS.Content.Models.Paths
                         PhysicalPath = Path.Combine(environment.ContentPath, GetRootPath(folder.GetType()), folder.Name);
                         VirtualPath = UrlUtility.Combine(environment.ContentVirtualPath, GetRootPath(folder.GetType()), folder.Name);
                     }
+                    else
+                    {
+                        this.PhysicalPath = Path.Combine(repositoryPath.PhysicalPath, GetRootPath(folder.GetType()), folder.Name);
+                        VirtualPath = UrlUtility.Combine(repositoryPath.VirtualPath, GetRootPath(folder.GetType()), folder.Name);
+                    }
                 }
                 
             }
