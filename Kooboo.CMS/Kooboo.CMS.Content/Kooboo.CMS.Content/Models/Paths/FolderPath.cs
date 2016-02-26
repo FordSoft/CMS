@@ -14,6 +14,7 @@ using Kooboo.Web.Url;
 using System.IO;
 using System.Web;
 using Kooboo.Extended;
+using Kooboo.CMS.Common;
 
 namespace Kooboo.CMS.Content.Models.Paths
 {
@@ -32,8 +33,21 @@ namespace Kooboo.CMS.Content.Models.Paths
             {
                 if (folder.GetType() == typeof (TextFolder))
                 {
-                    this.PhysicalPath = Path.Combine(repositoryPath.PhysicalPath, GetRootPath(folder.GetType()), folder.Name);
-                    VirtualPath = UrlUtility.Combine(repositoryPath.VirtualPath, GetRootPath(folder.GetType()), folder.Name);
+                    var dirName = Path.Combine(repositoryPath.PhysicalPath, GetRootPath(folder.GetType()), folder.Name);
+                    
+                    //Folder is link
+                    //
+                    if (!Directory.Exists(dirName) && File.Exists(dirName + ".lnk"))
+                    {
+                        var baseDir = Kooboo.CMS.Common.Runtime.EngineContext.Current.Resolve<IBaseDir>();
+                        PhysicalPath = Path.Combine(baseDir.Cms_DataPhysicalPath, "Contents", folder.Repository.Name, GetRootPath(folder.GetType()), folder.Name);
+                        VirtualPath = UrlUtility.GetVirtualPath(PhysicalPath);
+                    }
+                    else
+                    {
+                        PhysicalPath = Path.Combine(repositoryPath.PhysicalPath, GetRootPath(folder.GetType()), folder.Name);
+                        VirtualPath = UrlUtility.Combine(repositoryPath.VirtualPath, GetRootPath(folder.GetType()), folder.Name);
+                    }
                 }
                 else
                 {

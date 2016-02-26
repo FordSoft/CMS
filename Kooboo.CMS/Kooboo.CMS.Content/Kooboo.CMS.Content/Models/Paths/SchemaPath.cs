@@ -14,7 +14,8 @@ using Kooboo.Web.Url;
 using System.IO;
 using System.Net;
 using Kooboo.CMS.Form;
-
+using Kooboo.CMS.Common;
+using Kooboo.Extended;
 
 namespace Kooboo.CMS.Content.Models.Paths
 {
@@ -27,19 +28,19 @@ namespace Kooboo.CMS.Content.Models.Paths
 
             string schemaName = schema.Name;
 
-            //fix link schems
+            RepositoryPath repositoryPath = new RepositoryPath(schema.Repository);
+            var schemaPath = Path.Combine(repositoryPath.PhysicalPath, "Schemas", schema.Name);
+            
+            //Schema is link
             //
-            if (schema.Name.Contains(@"\"))
+            if (!Directory.Exists(schemaPath) && File.Exists(schemaPath + ".lnk"))                       
             {
-                var dir = new DirectoryInfo(schema.Name);
-                schemaName = dir.Name;
-                this.PhysicalPath = schema.Name;
-                this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
+                PhysicalPath = LinkHelper.ResolveShortcut(schemaPath + ".lnk");
+                SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);
                 VirtualPath = UrlUtility.GetVirtualPath(PhysicalPath);
             }
             else
             {
-                RepositoryPath repositoryPath = new RepositoryPath(schema.Repository);
                 var basePhysicalPath = GetBaseDir(schema.Repository);
                 this.PhysicalPath = Path.Combine(basePhysicalPath, schemaName);
                 this.SettingFile = Path.Combine(PhysicalPath, PathHelper.SettingFileName);

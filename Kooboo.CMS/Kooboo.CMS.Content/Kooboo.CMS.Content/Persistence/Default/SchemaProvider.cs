@@ -59,11 +59,12 @@ namespace Kooboo.CMS.Content.Persistence.Default
                 {
                     list.Add(new Schema(repository, item.Name));
                 }
-                //links
+
+                //Include link directories
                 //
-                foreach(var item in Directory.GetFiles(baseDir, "*.lnk"))
+                foreach (var item in Directory.GetFiles(baseDir, "*.lnk"))
                 {
-                    list.Add(new Schema(repository, LinkHelper.ResolveShortcut(item)));
+                    list.Add(new Schema(repository, LinkHelper.GetDirectoryInfo(LinkHelper.ResolveShortcut(item)).Name));
                 }
             }
             return list;
