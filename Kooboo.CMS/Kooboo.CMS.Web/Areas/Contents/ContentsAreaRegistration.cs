@@ -53,7 +53,7 @@ namespace Kooboo.CMS.Web.Areas.Contents
             roleManager.AddPermission(Permission.Contents_WorkflowPermission);
             roleManager.AddPermission(Permission.Contents_SearchSettingPermission);
             roleManager.AddPermission(Permission.Contents_HtmlBlockPermission);
-
+            roleManager.AddPermission(Permission.Sites_Settings_CreateSubSitePermission);
             #endregion
 
             base.RegisterArea(context);

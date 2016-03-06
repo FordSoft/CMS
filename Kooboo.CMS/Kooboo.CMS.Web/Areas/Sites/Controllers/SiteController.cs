@@ -94,7 +94,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 
 
         #region CreateSubSite
-        [CreateSiteAuthroziation]
+        //[CreateSiteAuthroziation] FS 06.03.16 check permissions 'CreateSubSitePermission' on this action
         public virtual ActionResult CreateSubSite(CreateSubSiteModel model)
         {
             string siteName = Request["siteName"] ?? Request["parent"];
@@ -107,7 +107,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             return View(model);
         }
 
-        [CreateSiteAuthroziation]
+        //[CreateSiteAuthroziation] FS 06.03.16 check permissions 'CreateSubSitePermission' on this action
         [HttpPost]
         public virtual ActionResult CreateSubSite(CreateSubSiteModel createSiteModel, FormCollection form)
         {

@@ -2598,4 +2598,31 @@ Microsoft ResX Schema
   <data name="Are you sure you want to localize this item?" xml:space="preserve">
     <value>Are you sure you want to localize this item?</value>
   </data>
+  <data name="The folder does not exists.&quot;{0}&quot;" xml:space="preserve">
+    <value>The folder does not exists."{0}"</value>
+  </data>
+  <data name="Indexed data" xml:space="preserve">
+    <value>Indexed data</value>
+  </data>
+  <data name="&quot;Content database&quot; является недопустимым." xml:space="preserve">
+    <value>"Content database" является недопустимым.</value>
+  </data>
+  <data name="Create a new database or select the database where &lt;br/&gt; your content is stored." xml:space="preserve">
+    <value>Create a new database or select the database where &lt;br/&gt; your content is stored.</value>
+  </data>
+  <data name="The site already exists." xml:space="preserve">
+    <value>The site already exists.</value>
+  </data>
+  <data name="The site cache has been cleared." xml:space="preserve">
+    <value>The site cache has been cleared.</value>
+  </data>
+  <data name="Unload" xml:space="preserve">
+    <value>Unload</value>
+  </data>
+  <data name="Publish site" xml:space="preserve">
+    <value>Опубликовать</value>
+  </data>
+  <data name="Unload site" xml:space="preserve">
+    <value>Выгрузить</value>
+  </data>
 </root>
