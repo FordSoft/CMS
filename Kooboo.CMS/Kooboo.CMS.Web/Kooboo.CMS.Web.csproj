@@ -2468,6 +2468,10 @@
       <Project>{ffd8e9f0-61b6-4b0d-a803-5beccd2a6578}</Project>
       <Name>Kooboo.CMS.Sites</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kooboo.Extensions\Kooboo.Extensions\Kooboo.Extensions.csproj">
+      <Project>{f591e3da-8c2c-4780-8e5a-643d28353585}</Project>
+      <Name>Kooboo.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kooboo\Kooboo.csproj">
       <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
       <Name>Kooboo</Name>
@@ -2564,6 +2568,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\disk.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="I18N\en-US.resx" />
+    <EmbeddedResource Include="I18N\ru-RU.resx" />
+    <EmbeddedResource Include="I18N\zh-CN.resx" />
+    <EmbeddedResource Include="I18N\zh-TW.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
