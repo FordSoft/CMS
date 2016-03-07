@@ -132,5 +132,29 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         [DisplayName("Device")]
         [Description("Used to create sites for special devices only, you can define regex expression to match the Browser User-Agent.<br />Only matched devices are allowed to view this site.")]
         public string UserAgent { get; set; }
+
+        [UIHint("FrontendDefaultApplicationPoolName")]
+        [DisplayName("Frontend application pool name")]
+        [Description("Application pool name for frontend sites")]
+        public string FrontendDefaultApplicationPoolName { get; set; }
+
+        [UIHint("FrontendDefaultProtocol")]
+        [DisplayName("Frontend default protocol")]
+        [Description("http/https")]
+        public string FrontendDefaultProtocol { get; set; }
+
+        [UIHint("FrontendDefaultIp")]
+        [DisplayName("Frontend ip site")]
+        [Description("Ip address work on frontend sites")]
+        public string FrontendDefaultIp { get; set; }
+
+        [UIHint("FrontendDefaultPort")]
+        [DisplayName("Frontend port site ")]
+        [Description("Port work on frontend sites")]
+        public string FrontendDefaultPort { get; set; }
+
+        [UIHint("ClientId")]
+        [DisplayName("Client login")]
+        public string ClientId { get; set; }
     }
 }

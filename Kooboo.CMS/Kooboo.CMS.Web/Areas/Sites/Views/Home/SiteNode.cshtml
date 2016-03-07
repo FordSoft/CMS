@@ -31,7 +31,9 @@
 
             <li>
                 <a href="#" target="_blank">
-                    @("Publish site".Localize())
+                    @Html.ActionLink("Publish site".Localize(), "Publish", "Site"
+                        , new RouteValueDictionary() { { "siteName", Model.Site.FullName } }
+                        , new RouteValueDictionary() { { "data-ajax", "POST" } })
                 </a>
             </li>
             <li>

@@ -55,6 +55,11 @@ namespace Kooboo.CMS.Sites.Models
         {
             return new Site(SplitFullName(fullName));
         }
+
+        public static Site GetRootSite(Site site)
+        {
+            return site.Parent != null ? GetRootSite(site.Parent) : site;
+        }
     }
     #endregion
 
@@ -791,6 +796,30 @@ namespace Kooboo.CMS.Sites.Models
         /// </value>
         [DataMember]
         public string UserAgent { get; set; }
+
+        private string _frontendDefaultApplicationPoolName = "Sales.Sites.Demo";
+        [DataMember(Order = 27)]
+        public string FrontendDefaultApplicationPoolName { get { return _frontendDefaultApplicationPoolName; } set { _frontendDefaultApplicationPoolName = value;} }
+
+        private string _frontendDefaultPort = "80";
+        [DataMember(Order = 28)]
+        public string FrontendDefaultPort { get { return _frontendDefaultPort; } set { _frontendDefaultPort = value; } }
+
+        private string _frontendDefaultIp = "*";
+        [DataMember(Order = 29)]
+        public string FrontendDefaultIp { get { return _frontendDefaultIp; } set { _frontendDefaultIp = value; } }
+
+        private string _frontendDefaultProtocol = "http";
+        [DataMember(Order = 30)]
+        public string FrontendDefaultProtocol { get { return _frontendDefaultProtocol; } set { _frontendDefaultProtocol = value; } }
+
+        private string _frontendPhysicalPath = @"files\publish\www";
+        [DataMember(Order = 31)]
+        public string FrontendPhysicalPath { get { return _frontendPhysicalPath; } set { _frontendPhysicalPath = value; } }
+
+        private string _cliendId;
+        [DataMember(Order = 32)]
+        public string ClientId { get { return _cliendId; } set { _cliendId = value; } }
     }
     #endregion
 }

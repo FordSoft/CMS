@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
-Creation date: 2012/05/18
-Version 1.0 for KooBoo CMS 3.2
-This translation is made by Ella S. (http://kooboo-cms.ru/)    
-
-Microsoft ResX Schema 
+    Microsoft ResX Schema 
     
     Version 2.0
     
@@ -2323,7 +2319,7 @@ Microsoft ResX Schema
     <value>A/B test reports</value>
   </data>
   <data name="Domain" xml:space="preserve">
-    <value>Domain</value>
+    <value>Домен</value>
   </data>
   <data name="Web resource" xml:space="preserve">
     <value>Web resource</value>
@@ -2624,5 +2620,71 @@ Microsoft ResX Schema
   </data>
   <data name="Unload site" xml:space="preserve">
     <value>Выгрузить</value>
+  </data>
+  <data name="Export (KB)" xml:space="preserve">
+    <value>Export (KB)</value>
+  </data>
+  <data name="Delete (KB)" xml:space="preserve">
+    <value>Delete (KB)</value>
+  </data>
+  <data name="Import database (KB)" xml:space="preserve">
+    <value>Import database (KB)</value>
+  </data>
+  <data name="Take offline (KB)" xml:space="preserve">
+    <value>Take offline (KB)</value>
+  </data>
+  <data name="Copy (KB)" xml:space="preserve">
+    <value>Copy (KB)</value>
+  </data>
+  <data name="Clear cache (KB)" xml:space="preserve">
+    <value>Clear cache (KB)</value>
+  </data>
+  <data name="Before publish site you must specify the domain name (System/Settings/Domain/Domains)" xml:space="preserve">
+    <value>Прежде чем публиковать сайт необходимо задать доменное имя(Система/Настройки/Домен/Доменны)</value>
+  </data>
+  <data name="Submission setting" xml:space="preserve">
+    <value>Submission setting</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Members</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Connects" xml:space="preserve">
+    <value>Connects</value>
+  </data>
+  <data name="The site has been successfully published." xml:space="preserve">
+    <value>Сайт успешно опубликован.</value>
+  </data>
+  <data name="Fail to publication:" xml:space="preserve">
+    <value>Ошибка при публикации:</value>
+  </data>
+  <data name="New sub page" xml:space="preserve">
+    <value>New sub page</value>
+  </data>
+  <data name="This page is set as homepage. Are you sure you want to remove it?" xml:space="preserve">
+    <value>This page is set as homepage. Are you sure you want to remove it?</value>
+  </data>
+  <data name="Are you sure you want to unpublish this page?" xml:space="preserve">
+    <value>Are you sure you want to unpublish this page?</value>
+  </data>
+  <data name="Are you sure you want to publish this page?" xml:space="preserve">
+    <value>Are you sure you want to publish this page?</value>
+  </data>
+  <data name="FrontendDefaultApplicationPoolName" xml:space="preserve">
+    <value>FrontendDefaultApplicationPoolName</value>
+  </data>
+  <data name="Site setting has been changed." xml:space="preserve">
+    <value>Site setting has been changed.</value>
+  </data>
+  <data name="ClientId" xml:space="preserve">
+    <value>ClientId</value>
+  </data>
+  <data name="Customer ID is not specified" xml:space="preserve">
+    <value>Не задан идентификатор клиента</value>
+  </data>
+  <data name="Client login" xml:space="preserve">
+    <value>Логин</value>
   </data>
 </root>

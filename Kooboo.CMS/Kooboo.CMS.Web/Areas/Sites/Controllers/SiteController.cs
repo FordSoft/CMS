@@ -28,6 +28,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Kooboo.Extensions;
 namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 {
     public class CreateSiteAuthroziationAttribute : Kooboo.CMS.Web.Authorizations.RequiredLogOnAttribute
@@ -95,6 +96,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 
         #region CreateSubSite
         //[CreateSiteAuthroziation] FS 06.03.16 check permissions 'CreateSubSitePermission' on this action
+        [Authorizations.RequiredLogOn]
         public virtual ActionResult CreateSubSite(CreateSubSiteModel model)
         {
             string siteName = Request["siteName"] ?? Request["parent"];
@@ -108,6 +110,8 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
         }
 
         //[CreateSiteAuthroziation] FS 06.03.16 check permissions 'CreateSubSitePermission' on this action
+
+        [Authorizations.RequiredLogOn]
         [HttpPost]
         public virtual ActionResult CreateSubSite(CreateSubSiteModel createSiteModel, FormCollection form)
         {
@@ -534,6 +538,16 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                     site.SSLDetection = model.SSLDetection;
                     site.UserAgent = model.UserAgent;
 
+                    if (ServiceFactory.UserManager.IsAdministrator(HttpContext.User.Identity.Name))
+                    {
+                        site.FrontendDefaultApplicationPoolName = model.FrontendDefaultApplicationPoolName;
+                        site.FrontendDefaultPort = model.FrontendDefaultPort;
+                        site.FrontendDefaultProtocol = model.FrontendDefaultProtocol;
+                        site.FrontendDefaultIp = model.FrontendDefaultIp;
+                        site.FrontendPhysicalPath = model.FrontendPhysicalPath;
+                        site.ClientId = model.ClientId;
+                    }
+
                     ServiceFactory.SiteManager.Update(site);
                     resultData.AddMessage("Site setting has been changed.".Localize());
                 }
@@ -622,5 +636,56 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 
         }
         #endregion
+
+        [Kooboo.CMS.Web.Authorizations.Authorization(AreaName = "Sites", Name = "Create sub site", Group = "System", Order = 0)]
+        public virtual ActionResult Publish(string siteName)
+        {
+            if(string.IsNullOrWhiteSpace(siteName))
+                throw new ArgumentNullException("siteName");
+            
+            var site = SiteHelper.Parse(siteName);
+            if (site == null)
+                throw new NullReferenceException("site");
+            site = site.AsActual();
+            var rootSite = SiteHelper.GetRootSite(site).AsActual();
+            if (string.IsNullOrWhiteSpace(rootSite.ClientId))
+                throw new Exception("Customer ID is not specified".Localize());
+            
+            var ip = rootSite.FrontendDefaultIp;
+            var path = Path.Combine(site.PhysicalPath, rootSite.FrontendPhysicalPath);
+            var protocol = rootSite.FrontendDefaultProtocol;
+            var port = rootSite.FrontendDefaultPort;
+            var appPoolName = rootSite.FrontendDefaultApplicationPoolName;
+            var name = string.Format("Frontend.{0}.{1}", rootSite.ClientId, siteName);
+
+            //Chek domain name
+            //
+            if (site.Domains == null || site.Domains.Length == 0)
+            {
+                var result = new JsonResultData(ModelState);
+                result.AddErrorMessage("Before publish site you must specify the domain name (System/Settings/Domain/Domains)".Localize());
+                return Json(result);
+            }
+            
+            try
+            {
+                //Create web site
+                //
+                IISManagerHelper.CreateWebSite(appPoolName, name, protocol, ip, site.Domains.ToArray(), port, path);
+
+            }
+            catch (Exception e)
+            {
+                var result = new JsonResultData();
+                result.AddException(new Exception("Fail to publication:".Localize() + " " + e.Message, e));
+                return Json(result);
+            }
+            
+            //Result
+            //
+            var data = new JsonResultData(ModelState);
+            data.AddMessage("The site has been successfully published.".Localize());
+            return Json(data);
+        }
     }
 }
