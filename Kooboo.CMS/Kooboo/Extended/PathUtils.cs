@@ -28,12 +28,13 @@ namespace Kooboo.Extended
     {
         public static DeployEnvironment GetDeployEnvironment(HttpContext context)
         {
-            var result = new DeployEnvironment();
+            DeployEnvironment result = null;
 
             switch (context.Request.Url.Port)
             {
                 case 81:
                     {
+                        result = new DeployEnvironment();
                         result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1";
                         result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo1/Cms_Data/";
@@ -43,6 +44,7 @@ namespace Kooboo.Extended
                     }
                 case 82:
                     {
+                        result = new DeployEnvironment();
                         result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2";
                         result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo2/Cms_Data/";
@@ -51,7 +53,7 @@ namespace Kooboo.Extended
                         break;
                     }
             }
-            if (!string.IsNullOrWhiteSpace(result.RootDataFile))
+            if (result != null && !string.IsNullOrWhiteSpace(result.RootDataFile))
             {
                 result.ContentPath = Path.Combine(result.RootDataFile, "Contents");
                 result.ContentVirtualPath = result.BaseVirtualPath + "Contents";
@@ -59,9 +61,7 @@ namespace Kooboo.Extended
 
             }
             return result;
-
-
-            return null;
+            
             /*
             switch (context.Request.Url.Host)
             {
