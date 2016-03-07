@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Microsoft.Web.Administration;
 
 namespace Kooboo.Extensions.IIS
@@ -100,6 +101,7 @@ namespace Kooboo.Extensions.IIS
             //
             iisManager.CommitChanges();
 
+            Thread.Sleep(1000);
             site.Start();
         }
 
