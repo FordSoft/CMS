@@ -79,6 +79,15 @@
             <div class="tab-content active" id="basicInfo">
                 <table>
                     <tbody>
+                        @if (ServiceFactory.UserManager.IsAdministrator(Html.ViewContext.HttpContext.User.Identity.Name))
+                        {
+                            @Html.EditorFor(m => m.ClientId, new { HtmlAttributes = new { @class = "medium" } })
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.ClientId)
+                        }
+
                         @Html.HiddenFor(m => m.Name)
                         @Html.DisplayFor(m => m.Name)
                         @Html.EditorFor(m => m.DisplayName, new { HtmlAttributes = new { @class = "medium" } })
@@ -88,6 +97,15 @@
                         @Html.EditorFor(m => m.TimeZoneId, new { HtmlAttributes = new { @class = "medium" } })
                         @Html.EditorFor(m => m.ShowSitemap)
                         @Html.EditorFor(m => m.EnableVersioning)
+                        @if (ServiceFactory.UserManager.IsAdministrator(Html.ViewContext.HttpContext.User.Identity.Name))
+                        {
+                            @Html.EditorFor(m => m.FrontendDefaultApplicationPoolName, new { HtmlAttributes = new { @class = "medium" } })
+                            @Html.EditorFor(m => m.FrontendDefaultProtocol, new { HtmlAttributes = new { @class = "medium" } })
+                            @Html.EditorFor(m => m.FrontendDefaultIp, new { HtmlAttributes = new { @class = "medium" } })
+                            @Html.EditorFor(m => m.FrontendDefaultPort, new { HtmlAttributes = new { @class = "medium" } })
+                            @Html.EditorFor(m => m.FrontendPhysicalPath, new { HtmlAttributes = new { @class = "medium" } })
+                        }
+
                     </tbody>
                 </table>
             </div>

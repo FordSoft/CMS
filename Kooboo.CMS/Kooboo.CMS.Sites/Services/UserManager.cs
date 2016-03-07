@@ -71,6 +71,23 @@ namespace Kooboo.CMS.Sites.Services
             }
             return false;
         }
+
+        public virtual bool IsInRole(string userName, string roleName)
+        {
+            return GetRoles(null, userName).Any(r => r.Name == roleName);
+        }
+
+        public virtual bool HasPrivilege(string userName, string priviligeId)
+        {
+            if (IsAdministrator(userName))
+                return true;
+            
+            var userRoles = GetRoles(null, userName); 
+            if (userRoles == null || !userRoles.Any())
+                return false;
+
+            return userRoles.SelectMany(r => r.Permissions).Any(p => p.Id == priviligeId);
+        }
         #endregion
 
         #region Authorize

@@ -89,6 +89,7 @@ namespace Kooboo.CMS.Account.Models
         public static Permission Sites_Settings_UrlRedirectPermission = new Permission() { AreaName = "Sites", Group = "System", Name = "Url redirect" };
         public static Permission Sites_Settings_Robot_TxtPermission = new Permission() { AreaName = "Sites", Group = "Settings", Name = "Robots.txt" };
         public static Permission Sites_Settings_VisitRulePermission = new Permission() { AreaName = "Sites", Group = "System", Name = "A/B Test" };
+        public static Permission Sites_Settings_CreateSubSitePermission = new Permission() { AreaName = "Sites", Group = "System", Name = "Create sub site" };
 
         public static Permission Sites_Templates_LayoutPermission = new Permission() { AreaName = "Sites", Group = "Development", Name = "Layout" };
         public static Permission Sites_Templates_ViewPermission = new Permission() { AreaName = "Sites", Group = "Development", Name = "View" };
