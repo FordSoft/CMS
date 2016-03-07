@@ -100,7 +100,7 @@ namespace Kooboo.Extensions.IIS
             //
             iisManager.CommitChanges();
 
-            site.Start();
+            //site.Start();
         }
 
         /// <summary>
