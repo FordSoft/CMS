@@ -66,6 +66,25 @@ else
 {
     <div class="topbar">
         <h1 class="title">@("Site cluster".Localize())</h1>
+
+        <ul class="sitemap-description right">
+            <li>
+                <span class="static" style="background: #1076a6"></span>
+                @("Root site".Localize())
+            </li>
+            <li>
+                <span class="dynamic" style="background: #3ca8db"></span>
+                @("Unpublished site".Localize())
+            </li>
+            <li>
+                <span class="unpublished" style="background: #87D682"></span>
+                @("Started site".Localize())
+            </li>
+            <li>
+                <span class="show-in-menu" style="background: #F96767"></span>
+                @("Stopped site".Localize())
+            </li>
+        </ul>
     </div>
     <div class="block fixed">
         @foreach (var siteTree in Model.Where(it => it.Root.Children.Count() == 0))

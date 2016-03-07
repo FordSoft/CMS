@@ -122,7 +122,7 @@ namespace Kooboo.CMS.Sites.Models
         public Site(Site parent, string name)
             : this(name)
         {
-            this.Parent = parent;
+            this.Parent = parent;            
         }
 
         public Site(IEnumerable<string> namePath)
@@ -244,6 +244,24 @@ namespace Kooboo.CMS.Sites.Models
             }
         }
 
+        public bool IsRoot()
+        {
+            return Parent == null;
+        }
+
+        public string UID
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(ClientId))
+                {
+                    var rootSite = SiteHelper.GetRootSite(this).AsActual();
+                    ClientId = rootSite.ClientId;
+                }
+
+                return string.Format("Frontend.{0}.{1}", ClientId, FullName);
+            }
+        }
 
         #region static
 
@@ -383,6 +401,11 @@ namespace Kooboo.CMS.Sites.Models
             {
                 parent = value;
                 _fullName = null;
+
+                //set client id from root site
+                //
+                var rootSite = SiteHelper.GetRootSite(this).AsActual();
+                ClientId = rootSite.ClientId;                
             }
         }
 

@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IISManagerHelper.cs" />
+    <Compile Include="IIS\IISHelper.cs" />
+    <Compile Include="IIS\StateOperationSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

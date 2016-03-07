@@ -278,7 +278,7 @@
     <value>В меню</value>
   </data>
   <data name="Unpublished" xml:space="preserve">
-    <value>Не опубликовано</value>
+    <value>Не опубликованно</value>
   </data>
   <data name="System" xml:space="preserve">
     <value>Система</value>
@@ -2686,5 +2686,41 @@
   </data>
   <data name="Client login" xml:space="preserve">
     <value>Логин</value>
+  </data>
+  <data name="State site" xml:space="preserve">
+    <value>Состояние</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="Fail change site state:" xml:space="preserve">
+    <value>Fail change site state:</value>
+  </data>
+  <data name="The site has been change state." xml:space="preserve">
+    <value>The site has been change state.</value>
+  </data>
+  <data name="Start site" xml:space="preserve">
+    <value>Запуск</value>
+  </data>
+  <data name="Stop site" xml:space="preserve">
+    <value>Остановить</value>
+  </data>
+  <data name="Restart site" xml:space="preserve">
+    <value>Рестарт сайта</value>
+  </data>
+  <data name="Root site" xml:space="preserve">
+    <value>Корневой сайт</value>
+  </data>
+  <data name="Unpublished site" xml:space="preserve">
+    <value>Не опубликованный сайт</value>
+  </data>
+  <data name="Started site" xml:space="preserve">
+    <value>Рабочий сайт</value>
+  </data>
+  <data name="Stopped site" xml:space="preserve">
+    <value>Остановленный сайт</value>
   </data>
 </root>

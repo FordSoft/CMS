@@ -29,6 +29,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Kooboo.Extensions;
+using Kooboo.Extensions.IIS;
+
 namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 {
     public class CreateSiteAuthroziationAttribute : Kooboo.CMS.Web.Authorizations.RequiredLogOnAttribute
@@ -637,7 +639,9 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
         }
         #endregion
 
-        [Kooboo.CMS.Web.Authorizations.Authorization(AreaName = "Sites", Name = "Create sub site", Group = "System", Order = 0)]
+        #region Frontend site operations
+        
+        [Authorizations.Authorization(AreaName = "Sites", Name = "Create sub site", Group = "System", Order = 0)]
         public virtual ActionResult Publish(string siteName)
         {
             if(string.IsNullOrWhiteSpace(siteName))
@@ -656,7 +660,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             var protocol = rootSite.FrontendDefaultProtocol;
             var port = rootSite.FrontendDefaultPort;
             var appPoolName = rootSite.FrontendDefaultApplicationPoolName;
-            var name = string.Format("Frontend.{0}.{1}", rootSite.ClientId, siteName);
+            var name = site.UID; //string.Format("Frontend.{0}.{1}", rootSite.ClientId, siteName);
 
             //Chek domain name
             //
@@ -671,13 +675,13 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             {
                 //Create web site
                 //
-                IISManagerHelper.CreateWebSite(appPoolName, name, protocol, ip, site.Domains.ToArray(), port, path);
+                IISHelper.CreateWebSite(appPoolName, name, protocol, ip, site.Domains.ToArray(), port, path);
 
             }
             catch (Exception e)
             {
                 var result = new JsonResultData();
-                result.AddException(new Exception("Fail to publication:".Localize() + " " + e.Message, e));
+                result.AddException(new Exception("Fail to publication.".Localize() + " " + e.Message, e));
                 return Json(result);
             }
             
@@ -687,5 +691,60 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             data.AddMessage("The site has been successfully published.".Localize());
             return Json(data);
         }
+
+        [Authorizations.Authorization(AreaName = "Sites", Name = "Create sub site", Group = "System", Order = 0)]
+        public virtual ActionResult ChangeSiteState(string siteName, string state)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(siteName))
+                    throw new ArgumentNullException("siteName");
+
+                if (string.IsNullOrWhiteSpace(state))
+                    throw new ArgumentNullException("state");
+
+                var site = SiteHelper.Parse(siteName);
+                if (site == null)
+                    throw new NullReferenceException("site");
+                site = site.AsActual();
+                IISHelper.SiteState(site.UID, (StateOperationSite)Enum.Parse(typeof(StateOperationSite), state));
+            }
+            catch (Exception e)
+            {
+                var result = new JsonResultData();
+                result.AddException(new Exception("Fail change site state.".Localize() + " " + e.Message, e));
+                return Json(result);
+            }
+
+            //Result
+            //
+            var data = new JsonResultData(ModelState);
+            data.ReloadPage = true;
+            //data.AddMessage("The site has been change state.".Localize());
+            return Json(data);
+        }
+
+        [Authorizations.Authorization(AreaName = "Sites", Name = "Create sub site", Group = "System", Order = 0)]
+        public static string GetSiteState(string siteName)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(siteName))
+                    throw new ArgumentNullException("siteName");
+
+                var site = SiteHelper.Parse(siteName);
+                if (site == null)
+                    throw new NullReferenceException("site");
+                site = site.AsActual();
+
+                return IISHelper.GetState(site.UID);
+            }
+            catch (Exception e)
+            {
+                Kooboo.HealthMonitoring.Log.LogException(e);
+                return "Unknown";
+            }
+        }
+        #endregion
     }
 }
