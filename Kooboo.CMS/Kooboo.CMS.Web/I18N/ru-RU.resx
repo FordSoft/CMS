@@ -2723,4 +2723,10 @@
   <data name="Stopped site" xml:space="preserve">
     <value>Остановленный сайт</value>
   </data>
+  <data name="Go site" xml:space="preserve">
+    <value>Перейти к сайту</value>
+  </data>
+  <data name="Inlinde site editor" xml:space="preserve">
+    <value>Редактор сайта</value>
+  </data>
 </root>
