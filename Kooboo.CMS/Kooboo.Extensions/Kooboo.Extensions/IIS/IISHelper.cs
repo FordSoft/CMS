@@ -54,6 +54,7 @@ namespace Kooboo.Extensions.IIS
                 case StateOperationSite.Restart:
                     {
                         site.Stop();
+                        Thread.Sleep(1000);
                         site.Start();
                         break;
                     }

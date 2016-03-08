@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href='@Url.Content("~/Images/favicon.ico")' />
     <title>
         @ViewBag.Title
-        @(" - CRM".Localize())
+        @(" - Kooboo CMS".Localize())
     </title>
     @Html.ExternalResources("siteStyles")
     @Html.ExternalResources("siteScripts")
@@ -36,11 +36,11 @@
             </div>
             <aside id="sidebar">
                 @if (IsSectionDefined("Sidebar"))
-                {
+                { 
                     @RenderSection("Sidebar", false)
                 }
                 else
-                {
+                { 
                     @Html.Partial("_Sidebar")
                 }
             </aside>

@@ -688,7 +688,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             //Result
             //
             var data = new JsonResultData(ModelState);
-            data.AddMessage("The site has been successfully published.".Localize());
+            data.ReloadPage = true;
             return Json(data);
         }
 
@@ -720,7 +720,6 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             //
             var data = new JsonResultData(ModelState);
             data.ReloadPage = true;
-            //data.AddMessage("The site has been change state.".Localize());
             return Json(data);
         }
 

@@ -9,7 +9,6 @@
 
     var frontendSiteState = Model.Site.IsRoot() ? "IsRoot" : SiteController.GetSiteState(Model.Site.FullName);
     var mapItemColor = "#C7C7C7";
-    bool hasSitePublished = false;
     switch (frontendSiteState)
     {
         case "IsRoot":
@@ -26,14 +25,12 @@
         case "Started":
             {
                 mapItemColor = "#87D682";
-                hasSitePublished = true;
                 break;
             }
         case "Stopping":
         case "Stopped":
             {
                 mapItemColor = "#F96767";
-                hasSitePublished = true;
                 break;
             }
     }
@@ -48,70 +45,39 @@
             @Html.IconImage("arrow-right")
         </span>
         <ul>
-            @if (hasSitePublished && Model.Site.Domains != null && Model.Site.Domains.Length > 0)
-            {
-                <li>
-                    @if (Model.Site.Domains.Length == 1)
-                    {
-                        <a href="http://@Model.Site.Domains[0]" target="_blank">
-                            @("Go site".Localize())
-                        </a>
-                    }
-                    else
-                    {
-                        <a>@("Go site".Localize())</a>
-                        <ul>
-                            @foreach (var domain in Model.Site.Domains)
-                            {
-                                <li>
-                                    <a href="http://@domain" target="_blank">
-                                        @domain
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    }
-                </li>
-            }
             <li>
                 <a href="@FrontUrlHelper.Preview(Url, Model.Site, null, null)" target="_blank">
-                    @("Inlinde site editor".Localize())
+                    @("Preview".Localize())
                 </a>
             </li>
-
             @if (ServiceFactory.UserManager.HasPrivilege(Html.ViewContext.HttpContext.User.Identity.Name, Kooboo.CMS.Account.Models.Permission.Sites_Settings_CreateSubSitePermission.Id))
             {
                 <li>
-                    @Html.ActionLink("Create a subsite".Localize(), "CreateSubSite", new { controller = "Site", parent = Model.Site.FullName, @return = Request.RawUrl }, new { title = "New sub site".Localize() })
+                    @Html.ActionLink("Create a subsite".Localize(), "CreateSubSite", new {controller = "Site", parent = Model.Site.FullName, @return = Request.RawUrl}, new {title = "New sub site".Localize()})
                 </li>
-
                 <li>
-                    @Html.ActionLink("Publish site".Localize(), "Publish", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
-                </li>
-                if (hasSitePublished)
-                {
-                    <li>
-                        <a>@("State site".Localize())</a>
-                        <ul>
-                            <li>
-                                @Html.ActionLink("Start site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Start" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Stop site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Stop" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Restart site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Restart" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
-                            </li>
-                        </ul>
-                    </li>
-                }
-                <li>
-                    <a href="#" target="_blank">
-                        @("Unload site".Localize())
-                    </a>
+                    <a>@("State site".Localize())</a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Start site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Start" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Stop site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Stop" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Restart site".Localize(), "ChangeSiteState", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName }, { "state", "Restart" } }, new RouteValueDictionary() { { "data-ajax", "POST" } })
+                        </li>
+                    </ul>
                 </li>
             }
-
+            <li>
+                @Html.ActionLink("Publish site".Localize(), "Publish", "Site", new RouteValueDictionary() { { "siteName", Model.Site.FullName } }, new RouteValueDictionary() { { "data-ajax", "POST" } })                
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    @("Unload site".Localize())
+                </a>
+            </li>
 
             @if (ServiceFactory.UserManager.IsAdministrator(Html.ViewContext.HttpContext.User.Identity.Name))
             {
@@ -124,19 +90,18 @@
                 <li>@Html.ActionLink("Import database (KB)".Localize(), "ImportRepository", ViewContext.RequestContext.AllRouteValues().Merge("controller", "site").Merge("SiteName", Model.Site.FullName).Merge("return", Request.RawUrl), new RouteValueDictionary())</li>
                 <li>
                     @Html.ActionLink(Model.IsOnLine ? "Take offline (KB)".Localize() : "Take online".Localize(), "SwitchOffOn", "Site"
-                        , new RouteValueDictionary() { { "siteName", Model.Site.FullName } }
-                        , new RouteValueDictionary() { { "data-ajax", "POST" } })
+                    , new RouteValueDictionary() { { "siteName", Model.Site.FullName } }
+                    , new RouteValueDictionary() { { "data-ajax", "POST" } })
                 </li>
                 <li>
                     @Html.ActionLink("Copy (KB)".Localize(), "Copy", "Site", new { siteName = Model.Site.FullName, @return = Request.RawUrl }, null)
                 </li>
                 <li>
                     @Html.ActionLink("Clear cache (KB)".Localize(), "ClearCache", ViewContext.RequestContext.AllRouteValues().Merge("controller", "Site").Merge("SiteName", Model.Site.FullName),
-                        new RouteValueDictionary() { { "data-ajax", "POST" } })
+                new RouteValueDictionary() { { "data-ajax", "POST" } })
                 </li>
             }
         </ul>
-
     </div>
 }
 else

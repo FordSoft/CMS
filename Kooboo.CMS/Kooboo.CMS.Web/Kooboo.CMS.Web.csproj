@@ -2567,7 +2567,6 @@
     <Content Include="Areas\Sites\Views\PageDesign\HtmlBlockItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\logo.pdn" />
     <None Include="Properties\PublishProfiles\disk.pubxml" />
   </ItemGroup>
   <ItemGroup>

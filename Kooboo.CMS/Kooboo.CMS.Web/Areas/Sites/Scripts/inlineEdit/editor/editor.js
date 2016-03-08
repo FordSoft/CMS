@@ -173,7 +173,6 @@
                 inline: true,
                 menubar: false,
                 allow_script_urls: true,
-                forced_root_block: "", //disable root <p> tag,
                 toolbar_items_size: 'small',
 		toolbar: "save exit | searchreplace undo redo | bold italic forecolor formatselect | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | image link unlink | rawcode",
                 setup: function (ed) {                   
