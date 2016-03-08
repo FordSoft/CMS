@@ -33,6 +33,8 @@ namespace Kooboo.Extended
             switch (context.Request.Url.Host)
             {
                 case "tissot1.brainworks.ru":
+                case "tissot2.brainworks.ru":
+                case "2nano.brainworks.ru":
                 case "demo1.brainworks.ru":
                     {
                         result = new DeployEnvironment();
