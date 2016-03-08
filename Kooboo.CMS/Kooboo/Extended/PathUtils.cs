@@ -42,7 +42,7 @@ namespace Kooboo.Extended
                         result.ChildSitesBasePhysicalPath = @"G:\sales\Web\Config\demo1\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo1/Cms_Data/";
                         result.RootDataFile = @"G:\sales\Web\Config\demo1\Cms_Data";
-                        
+
                         break;
                     }
                 case "demo2.brainworks.ru":
