@@ -10,10 +10,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
     public class TrueExpression : IWhereExpression
     {
+        public virtual OQuery OQueryExpression { get; set; }
     }
 }

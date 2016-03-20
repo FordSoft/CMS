@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\KoobooModule\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -74,6 +78,7 @@
     <Compile Include="EventBus\Content\ContentWorkflowSubscriber.cs" />
     <Compile Include="EventBus\Content\ContentImageCropSubscriber.cs" />
     <Compile Include="EventBus\EventResult.cs" />
+    <Compile Include="Extensions\ContentHelper.cs" />
     <Compile Include="Formatter\ITextContentFormater.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryFolder.cs" />
@@ -275,6 +280,10 @@
     <ProjectReference Include="..\..\Kooboo.CMS.Form\Kooboo.CMS.Form.csproj">
       <Project>{C4F32215-EFAD-45C9-8276-6126681C3589}</Project>
       <Name>Kooboo.CMS.Form</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Kooboo.Extensions\Kooboo.Extensions\Kooboo.Extensions.csproj">
+      <Project>{f591e3da-8c2c-4780-8e5a-643d28353585}</Project>
+      <Name>Kooboo.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Kooboo\Kooboo.csproj">
       <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>

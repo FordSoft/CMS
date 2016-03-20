@@ -97,6 +97,10 @@ namespace Kooboo.CMS.Web.Areas.Contents.Models
             get;
             set;
         }
+
+        [DisplayName("Store in API")]
+        [Description("If true content stored in API service else current repository.")]
+        public bool StoreInAPI { get; set; }
     }
 
     [MetadataFor(typeof(OrderSetting))]

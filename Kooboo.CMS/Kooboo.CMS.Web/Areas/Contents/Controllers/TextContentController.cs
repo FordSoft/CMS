@@ -281,7 +281,7 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             ViewData["Menu"] = textFolder.GetFormTemplate(FormType.Update_Menu);
             ViewData["Template"] = textFolder.GetFormTemplate(FormType.Update);
             SetPermissionData(textFolder);
-            var content = schema.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
+            var content = textFolder.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
             if (content != null)
             {
                 content = WorkflowManager.GetPendWorkflowItemForContent(Repository, content, User.Identity.Name);

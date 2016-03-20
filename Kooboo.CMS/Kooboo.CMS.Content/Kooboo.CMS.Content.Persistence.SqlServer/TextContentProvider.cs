@@ -7,6 +7,7 @@
 // 
 #endregion
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,21 @@ using System.Data.SqlClient;
 using Kooboo.CMS.Content.Models;
 using Kooboo.CMS.Content.Persistence.Default;
 using System.Diagnostics;
+using System.Reflection;
+using System.Security.Policy;
+using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
+using Kooboo.CMS.Common.Runtime;
+using Kooboo.CMS.Content.Query.Expressions;
+using Microsoft.OData.Client;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OData;
+using Sales.Model.DataModel.Kb;
+using Sales.Shared.BackEnd;
+using Kooboo.Extensions.Extensions;
+using Kooboo.CMS.Content.Extensions;
+using Kooboo.CMS.Content.Query;
 
 namespace Kooboo.CMS.Content.Persistence.SqlServer
 {
@@ -193,13 +208,148 @@ namespace Kooboo.CMS.Content.Persistence.SqlServer
             }
 
         }
+        
+        public static List<string> _schems = new List<string>() { "Test", "Test2" };
+
+        private OQuery CreateMainQuery(string name, string folderName)
+        {
+            return OQuery
+                .From(name)
+                .Let("FolderName", folderName)
+                .Where("item => FolderName == $FolderName");
+        }
+
+        public object GetResult(TextFolder folder, Schema schema, Kooboo.CMS.Content.Query.Expressions.Expression expression, Kooboo.CMS.Content.Query.Expressions.CallType callType)
+        {
+            try
+            {
+                switch (callType)
+                {
+                    //Count
+                    //
+                    case Query.Expressions.CallType.Count:
+                        {
+                            var query = Attach(CreateMainQuery(schema.Name + "/Default.Count()", folder.FullName), expression);
+                            return Sales.Shared.BackEnd.BackendQuery.Get<int>(query.ToString());                            
+                        }
+                    //FirstOrDefault
+                    //
+                    case CallType.First:
+                    case CallType.FirstOrDefault:
+                        {
+
+                            var query = Attach(CreateMainQuery(schema.Name, folder.FullName).Take(1), expression);
+                            var result = ContentHelper.ParseTextContent(schema, BackendQuery.Get(query.ToString()));
+                            
+                            if (result == null && callType == CallType.First)
+                                throw new InvalidOperationException(SR.GetString("NoElements"));
+
+                            if (result == null || result.Length == 0)
+                                return result;
+
+                            return result[0];
+                        }
+                    //List
+                    //
+                    case CallType.Unspecified:
+                        {
+                            var query = Attach(CreateMainQuery(schema.Name, folder.FullName), expression);
+                            return ContentHelper.ParseTextContent(schema, BackendQuery.Get(query.ToString()));
+                        }
+                    default: throw new NotImplementedException(string.Format("CallType: '{0}' not implemented", callType));
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        
+        public OQuery Attach(OQuery src, IExpression expression)
+        {
+
+            if (expression is TakeExpression && expression.OQueryExpression != null)
+            {
+                src.Take(expression.OQueryExpression._top);
+            }
+            else if (expression is SkipExpression && expression.OQueryExpression != null)
+            {
+                src.Skip(expression.OQueryExpression._skip);
+            }
+            else if (expression is OrderExpression)
+            {
+                var orderExpression = (OrderExpression)expression;
+                if (orderExpression.Descending)
+                    src.OrderbyDesc(orderExpression.FieldName);
+                else
+                    src.Orderby(orderExpression.FieldName);
+            }
+            else if (expression is AndAlsoExpression)
+            {
+                var andAlsoExpression = (AndAlsoExpression) expression;
+                if (andAlsoExpression.Left != null)
+                    Attach(src, andAlsoExpression.Left);
+
+                if (andAlsoExpression.Right != null)
+                    Attach(src, andAlsoExpression.Right);
+            }
+            else if (expression is OrElseExpression)
+            {
+                var orElseExpression = (OrElseExpression) expression;
+                if (orElseExpression.Left != null)
+                    Attach(src, orElseExpression.Left);
+
+                if (orElseExpression.Right != null)
+                    Attach(src, orElseExpression.Right);
+
+            }
+
+
+            if (expression.OQueryExpression != null)
+            {
+                src.Attach(expression.OQueryExpression);
+            }
+
+
+            if (expression is Expression)
+            {
+                var exp = (Expression)expression;
+                if (exp.InnerExpression != null)
+                    return Attach(src, exp.InnerExpression);
+            }
+
+            return src;
+        }
 
         public object Execute(Query.IContentQuery<Models.TextContent> query)
         {
+            object result = null;
+            
+            //Get content from API service
+            //
+            if (query is TextContentQuery && ((TextContentQuery)query).Folder != null && ((TextContentQuery)query).Folder.GetActualFolder().StoreInAPI)
+            {
+                var folder = ((TextContentQuery)query).Folder;
+                var schema = ((Kooboo.CMS.Content.Query.TextContentQuery)query).Schema;
+
+                if (query.Expression is Query.Expressions.CallExpression)
+                {
+                    result = GetResult(folder, schema, (Expression)query.Expression, ((Query.Expressions.CallExpression)query.Expression).CallType);
+                }
+                else if (query.Expression is Query.Expressions.TakeExpression
+                    || query.Expression is Kooboo.CMS.Content.Query.Expressions.OrderExpression)
+                {
+                    result = GetResult(folder, schema, (Expression)query.Expression, Kooboo.CMS.Content.Query.Expressions.CallType.Unspecified);
+                }
+                if (result == null)
+                    return new TextContent[] {};
+
+                return result;
+            }
 
             var translator = new QueryProcessor.TextContentTranslator();
             var executor = translator.Translate(query);
-            var result = executor.Execute();
+            result = executor.Execute();
 
             return result;
         }

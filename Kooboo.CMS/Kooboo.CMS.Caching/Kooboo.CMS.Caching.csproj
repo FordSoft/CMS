@@ -57,6 +57,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kooboo.CMS.Common\Kooboo.CMS.Common.csproj">
+      <Project>{AB6DDE14-EEB6-4497-80A0-D148A0A692B5}</Project>
+      <Name>Kooboo.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.Extensions\Kooboo.Extensions\Kooboo.Extensions.csproj">
+      <Project>{F591E3DA-8C2C-4780-8E5A-643D28353585}</Project>
+      <Name>Kooboo.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kooboo\Kooboo.csproj">
       <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
       <Name>Kooboo</Name>

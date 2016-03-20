@@ -13,6 +13,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
+using System.Collections.Concurrent;
+using System.ComponentModel;
+using System.Runtime.Caching;
+using Kooboo.CMS.Caching;
 
 namespace Kooboo.CMS.Content.Models
 {
@@ -140,6 +144,9 @@ namespace Kooboo.CMS.Content.Models
             }
         }
 
+        [DataMember(Order = 21)]
+        public bool StoreInAPI { get; set; }
+
         public bool EnabledWorkflow
         {
             get
@@ -170,6 +177,10 @@ namespace Kooboo.CMS.Content.Models
                 }
             }
         }
-
+        
+        public TextFolder GetActualFolder()
+        {
+            return CacheManagerFactory.GetActual(FullName, GetType().Name, this);
+        }
     }
 }

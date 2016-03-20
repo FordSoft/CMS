@@ -10,12 +10,14 @@ using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Form;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
+using Kooboo.CMS.Caching;
 using Kooboo.Globalization;
 namespace Kooboo.CMS.Content.Models
 {
@@ -476,7 +478,11 @@ namespace Kooboo.CMS.Content.Models
             get;
             set;
         }
-
+        
+        public Schema GetActualSchema()
+        {
+            return CacheManagerFactory.GetActual(Name, GetType().Name, this);            
+        }
     }
 
     public partial class Schema : IPersistable, IIdentifiable
