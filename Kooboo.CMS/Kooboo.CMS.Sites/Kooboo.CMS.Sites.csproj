@@ -590,6 +590,10 @@
       <Project>{c7b73e67-d226-41cb-a86d-410276b265a1}</Project>
       <Name>Kooboo.CMS.Search</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kooboo.Extensions\Kooboo.Extensions\Kooboo.Extensions.csproj">
+      <Project>{F591E3DA-8C2C-4780-8E5A-643D28353585}</Project>
+      <Name>Kooboo.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kooboo\Kooboo.csproj">
       <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
       <Name>Kooboo</Name>

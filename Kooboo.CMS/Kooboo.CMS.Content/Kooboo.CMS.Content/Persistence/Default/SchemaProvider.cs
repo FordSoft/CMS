@@ -18,7 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Helpers;
 
 namespace Kooboo.CMS.Content.Persistence.Default
 {

@@ -15,7 +15,7 @@ using System.IO;
 using System.Net;
 using Kooboo.CMS.Form;
 using Kooboo.CMS.Common;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Helpers;
 
 namespace Kooboo.CMS.Content.Models.Paths
 {

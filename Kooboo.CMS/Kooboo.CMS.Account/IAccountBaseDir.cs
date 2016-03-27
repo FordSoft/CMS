@@ -14,7 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Path;
 
 namespace Kooboo.CMS.Account
 {

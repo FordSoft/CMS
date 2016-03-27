@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Web;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Web;
 
-namespace Kooboo.Extended
+namespace Kooboo.Extensions.Cluster.Path
 {
 
     public class DeployEnvironment
@@ -53,9 +49,9 @@ namespace Kooboo.Extended
             }
             if (!string.IsNullOrWhiteSpace(result.RootDataFile))
             {
-                result.ContentPath = Path.Combine(result.RootDataFile, "Contents");
+                result.ContentPath = System.IO.Path.Combine(result.RootDataFile, "Contents");
                 result.ContentVirtualPath = result.BaseVirtualPath + "Contents";
-                result.AccountPath = Path.Combine(result.RootDataFile, "Account");
+                result.AccountPath = System.IO.Path.Combine(result.RootDataFile, "Account");
 
             }
             return result;            

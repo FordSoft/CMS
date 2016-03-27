@@ -14,7 +14,7 @@ using System.IO;
 using Kooboo.CMS.Content.Models;
 using Kooboo.CMS.Content.Models.Paths;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Helpers;
 
 namespace Kooboo.CMS.Content.Persistence.Default
 {

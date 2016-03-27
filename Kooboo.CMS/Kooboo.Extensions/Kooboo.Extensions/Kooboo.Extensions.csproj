@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cluster\Helpers\LinkHelper.cs" />
+    <Compile Include="Cluster\Path\PathUtils.cs" />
     <Compile Include="Common\CacheSettings.cs" />
     <Compile Include="Extensions\JTokenHelper.cs" />
     <Compile Include="IIS\IISHelper.cs" />
