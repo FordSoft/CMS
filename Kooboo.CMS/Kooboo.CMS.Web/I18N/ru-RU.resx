@@ -2879,4 +2879,76 @@
   <data name="Insert" xml:space="preserve">
     <value>Insert</value>
   </data>
+  <data name="JsonSerializationIgnoreProperties" xml:space="preserve">
+    <value>JsonSerializationIgnoreProperties</value>
+  </data>
+  <data name="Атрибуты которые не передаются в API." xml:space="preserve">
+    <value>Атрибуты которые не передаются в API.</value>
+  </data>
+  <data name="Игнорируемые атрибуты" xml:space="preserve">
+    <value>Игнорируемые атрибуты</value>
+  </data>
+  <data name="Параметры необходимо указать через запятую, без пробелов и спец. символов" xml:space="preserve">
+    <value>Параметры необходимо указать через запятую, без пробелов и спец. символов</value>
+  </data>
+  <data name="txt" xml:space="preserve">
+    <value>txt</value>
+  </data>
+  <data name="Требуется поле SingleChoice." xml:space="preserve">
+    <value>Требуется поле SingleChoice.</value>
+  </data>
+  <data name="Edit user" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="Users with global roles have access to all websites using the defined roles." xml:space="preserve">
+    <value>Users with global roles have access to all websites using the defined roles.</value>
+  </data>
+  <data name="Требуется поле Is administrator." xml:space="preserve">
+    <value>Требуется поле Is administrator.</value>
+  </data>
+  <data name="Требуется поле Is locked out." xml:space="preserve">
+    <value>Требуется поле Is locked out.</value>
+  </data>
+  <data name="Reset user password" xml:space="preserve">
+    <value>Reset user password</value>
+  </data>
+  <data name="&quot;Re-enter password&quot; не соответствует &quot;New password&quot;." xml:space="preserve">
+    <value>"Re-enter password" не соответствует "New password".</value>
+  </data>
+  <data name="New role" xml:space="preserve">
+    <value>New role</value>
+  </data>
+  <data name="Edit role" xml:space="preserve">
+    <value>Edit role</value>
+  </data>
+  <data name="Sites" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="Create sub site" xml:space="preserve">
+    <value>Create sub site</value>
+  </data>
+  <data name="Scripts/Themes/Custom files" xml:space="preserve">
+    <value>Scripts/Themes/Custom files</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="Search setting" xml:space="preserve">
+    <value>Search setting</value>
+  </data>
+  <data name="Ignored attributes" xml:space="preserve">
+    <value>Игнорируемые атрибуты</value>
+  </data>
+  <data name="The list of attributes to exclude when transmission service API" xml:space="preserve">
+    <value>Список атрибутов исключаемых при передачи в сервис API</value>
+  </data>
+  <data name="The parameters must specify a comma, no spaces or special characters" xml:space="preserve">
+    <value>Параметры необходимо указать через запятую, без пробелов и спец. символов</value>
+  </data>
 </root>

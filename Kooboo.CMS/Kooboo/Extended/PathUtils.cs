@@ -28,42 +28,37 @@ namespace Kooboo.Extended
     {
         public static DeployEnvironment GetDeployEnvironment(HttpContext context)
         {
-            DeployEnvironment result = null;
+            var result = new DeployEnvironment();
 
-            switch (context.Request.Url.Host)
+            switch (context.Request.Url.Port)
             {
-                case "tissot1.brainworks.ru":
-                case "tissot2.brainworks.ru":
-                case "2nano.brainworks.ru":
-                case "demo1.brainworks.ru":
+                case 81:
                     {
-                        result = new DeployEnvironment();
-                        result.SqlServerConfigBaseDirectory = @"G:\sales\Web\Config\demo1";
-                        result.ChildSitesBasePhysicalPath = @"G:\sales\Web\Config\demo1\Cms_Data";
+                        result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1";
+                        result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo1/Cms_Data/";
-                        result.RootDataFile = @"G:\sales\Web\Config\demo1\Cms_Data";
+                        result.RootDataFile = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo1\Cms_Data";
 
                         break;
                     }
-                case "demo2.brainworks.ru":
+                case 82:
                     {
-                        result = new DeployEnvironment();
-                        result.SqlServerConfigBaseDirectory = @"G:\sales\Web\Config\demo2";
-                        result.ChildSitesBasePhysicalPath = @"G:\sales\Web\Config\demo2\Cms_Data";
+                        result.SqlServerConfigBaseDirectory = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2";
+                        result.ChildSitesBasePhysicalPath = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2\Cms_Data";
                         result.BaseVirtualPath = "~/Config/demo2/Cms_Data/";
-                        result.RootDataFile = @"G:\sales\Web\Config\demo2\Cms_Data";
+                        result.RootDataFile = @"C:\git\Kooboo.Cms\CMS\Kooboo.CMS\Kooboo.CMS.Web\Config\demo2\Cms_Data";
 
                         break;
                     }
             }
-            if (result != null && !string.IsNullOrWhiteSpace(result.RootDataFile))
+            if (!string.IsNullOrWhiteSpace(result.RootDataFile))
             {
                 result.ContentPath = Path.Combine(result.RootDataFile, "Contents");
                 result.ContentVirtualPath = result.BaseVirtualPath + "Contents";
                 result.AccountPath = Path.Combine(result.RootDataFile, "Account");
 
             }
-            return result;
+            return result;            
         }
     }
 }

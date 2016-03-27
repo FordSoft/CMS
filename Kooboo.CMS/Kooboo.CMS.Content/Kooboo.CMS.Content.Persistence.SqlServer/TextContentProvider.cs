@@ -18,6 +18,7 @@ using Kooboo.CMS.Content.Persistence.Default;
 using System.Diagnostics;
 using System.Reflection;
 using System.Security.Policy;
+using System.Web;
 using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Common.Runtime;
@@ -26,14 +27,16 @@ using Microsoft.OData.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OData;
-using Sales.Model.DataModel.Kb;
 using Sales.Shared.BackEnd;
 using Kooboo.Extensions.Extensions;
 using Kooboo.CMS.Content.Extensions;
 using Kooboo.CMS.Content.Query;
+using Newtonsoft.Json.Serialization;
+using Sales.Shared.Collections;
+using Sales.Shared.Helpers.Auth;
 
 namespace Kooboo.CMS.Content.Persistence.SqlServer
-{
+{    
     public class SQLServerTransactionUnit : ITransactionUnit
     {
         public static SQLServerTransactionUnit Current
@@ -148,24 +151,47 @@ namespace Kooboo.CMS.Content.Persistence.SqlServer
             try
             {
                 content.StoreFiles();
-
                 ((IPersistable)content).OnSaving();
-                var command = dbCommands.Add(content);
-                if (command != null)
+
+                var folder = content.GetFolder().GetActualFolder();
+                var schema = content.GetSchema().GetActualSchema();
+                if (folder != null && folder.StoreInAPI)
                 {
-                    if (SQLServerTransactionUnit.Current != null)
+                    var proxy = new BackendProxy();
+                    
+                    var additionalData = new Dictionary<string, object>()
                     {
-                        SQLServerTransactionUnit.Current.RegisterCommand(command);
-                        SQLServerTransactionUnit.Current.RegisterPostAction(delegate() { ((IPersistable)content).OnSaved(); });
-                    }
-                    else
-                    {
-                        SQLServerHelper.BatchExecuteNonQuery(content.GetRepository(), command);
-                        ((IPersistable)content).OnSaved();
-                    }
+                        {"CreatedBy", AuthHelper.GetCurrentUserName()},
+                        {"ModifiedBy", AuthHelper.GetCurrentUserName()},
+                        {"OwnerId", AuthHelper.GetCurrentUserName()}
+                    };
 
+                    //Get payload
+                    //
+                    var payload = JsonConvert.SerializeObject(content, 
+                        new CustomJsonDictionaryConverter(schema.GetJsonSerializationIgnoreProperties(), additionalData));
+                    
+                    //Send data to API
+                    //      
+                    proxy.Execute("POST", schema.Name, payload);
                 }
-
+                else
+                {
+                    var command = dbCommands.Add(content);
+                    if (command != null)
+                    {
+                        if (SQLServerTransactionUnit.Current != null)
+                        {
+                            SQLServerTransactionUnit.Current.RegisterCommand(command);
+                            SQLServerTransactionUnit.Current.RegisterPostAction(delegate () { ((IPersistable)content).OnSaved(); });
+                        }
+                        else
+                        {
+                            SQLServerHelper.BatchExecuteNonQuery(content.GetRepository(), command);
+                            ((IPersistable)content).OnSaved();
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -173,24 +199,48 @@ namespace Kooboo.CMS.Content.Persistence.SqlServer
             }
 
         }
-
+        
         public void Update(Models.TextContent @new, Models.TextContent old)
         {
             @new.StoreFiles();
 
             ((IPersistable)@new).OnSaving();
-            var command = dbCommands.Update(@new);
-            if (SQLServerTransactionUnit.Current != null)
+
+            var folder = @new.GetFolder().GetActualFolder();
+            var schema = @new.GetSchema().GetActualSchema();
+            if (folder != null && folder.StoreInAPI)
             {
-                SQLServerTransactionUnit.Current.RegisterCommand(command);
-                SQLServerTransactionUnit.Current.RegisterPostAction(delegate() { ((IPersistable)@new).OnSaved(); });
+                var proxyBackend = new BackendProxy();
+
+                //Add additional data
+                //
+                var additionalData = new Dictionary<string, object>
+                {
+                    {"ModifiedBy", AuthHelper.GetCurrentUserName()}
+                };
+                
+                //Get payload
+                //
+                var payload = JsonConvert.SerializeObject(@new, new CustomJsonDictionaryConverter(schema.GetJsonSerializationIgnoreProperties(), additionalData));
+
+                //Send data to API
+                // 
+                proxyBackend.Execute("PUT", string.Format("{0}({1})", schema.Name, @new.Id), payload);
             }
             else
             {
-                SQLServerHelper.BatchExecuteNonQuery(@new.GetRepository(), command);
-                ((IPersistable)@new).OnSaved();
+                var command = dbCommands.Update(@new);
+                if (SQLServerTransactionUnit.Current != null)
+                {
+                    SQLServerTransactionUnit.Current.RegisterCommand(command);
+                    SQLServerTransactionUnit.Current.RegisterPostAction(delegate () { ((IPersistable)@new).OnSaved(); });
+                }
+                else
+                {
+                    SQLServerHelper.BatchExecuteNonQuery(@new.GetRepository(), command);
+                    ((IPersistable)@new).OnSaved();
+                }
             }
-
         }
 
         public void Delete(Models.TextContent content)
@@ -323,6 +373,18 @@ namespace Kooboo.CMS.Content.Persistence.SqlServer
 
         public object Execute(Query.IContentQuery<Models.TextContent> query)
         {
+            /*
+            Categories            
+            SELECT * FROM [ef1].[dbo].[Test2] category
+               WHERE  EXISTS(
+                        SELECT ContentCategory.CategoryUUID 
+                            FROM [fullips.__ContentCategory] ContentCategory,
+                                (SELECT * FROM [ef1].[dbo].[Tests] content WHERE ([UUID] = 'F562CCDW9FGM53WE') AND FolderName='Test' )content
+                            WHERE content.UUID = ContentCategory.UUID AND ContentCategory.CategoryUUID = category.UUID 
+                      ) AND 1=1 AND FolderName='Test2' ORDER BY Id DESC
+                      
+            */
+
             object result = null;
             
             //Get content from API service

@@ -9,6 +9,9 @@
 <p class="field">
     @Html.EditorFor(m => m.IsTreeStyle, new { HtmlAttributes = new RouteValueDictionary() { { "data-bind", "checked:schemaModel.IsTreeStyle" } } })
 </p>
+<p class="field">
+    @Html.EditorFor(m => m.JsonSerializationIgnoreProperties, new { HtmlAttributes = new RouteValueDictionary() { { "data-bind", "value:schemaModel.JsonSerializationIgnoreProperties" } } })
+</p>
 <div class="block command">
     <input type="button" class="button" value="Create field" data-bind="click:AddNewColumn"/>
 </div>

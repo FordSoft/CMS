@@ -13,6 +13,8 @@ namespace Kooboo.CMS.Content.Extensions
 {
     public static class ContentHelper
     {
+        public static IDictionary<string, DataType> IncludePropertues = new Dictionary<string, DataType> { {"RowVersion", DataType.String }};
+         
         public static ITimeZoneHelper TimeZoneHelper = EngineContext.Current.Resolve<ITimeZoneHelper>();
 
         public static DateTime FixUTCDateTime(DateTime value)
@@ -32,23 +34,39 @@ namespace Kooboo.CMS.Content.Extensions
 
                 var prop = (JProperty)property;
                 var name = prop.Name;
+                DataType dataType;
 
                 var column = schema.GetActualSchema().AllColumns.FirstOrDefault(c => c.Name == name);
-                if (column == null)
-                    continue;
-
-                var value = DataTypeHelper.ParseValue(column.DataType, jToken.GetValue<string>(name), false);
-
-                if (value is DateTime)
+                
+                if (column != null)
                 {
-                    value = FixUTCDateTime((DateTime)value);
+                    dataType = column.DataType;
+                }
+                //Include properties
+                else if (IncludePropertues != null && IncludePropertues.Keys.Any(c => c == name))
+                {
+                    dataType = IncludePropertues[name];
+                }
+                else
+                {
+                    continue;
                 }
 
-                content[column.Name] = value;
+                object value;
+                if (dataType == DataType.DateTime)
+                {
+                    value = FixUTCDateTime(jToken.GetValue<DateTime>(name));
+                }
+                else
+                {
+                    value = DataTypeHelper.ParseValue(dataType, jToken.GetValue<string>(name), false);
+                }
+                
+                content[name] = value;
             }
             return content;
         }
-
+        
         public static Dictionary<Type, PropertyInfo[]> _properties = new Dictionary<Type, PropertyInfo[]>();
 
         public static T ToContent<T>(object remoteContent, T content) where T : ContentBase

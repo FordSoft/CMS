@@ -94,10 +94,6 @@
     <Compile Include="TextContentProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Sales\Sales.Model\Sales.Model.csproj">
-      <Project>{038e30e0-7d34-4168-8d2d-44e6acb5f08d}</Project>
-      <Name>Sales.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Sales\Sales.Shared\Sales.Shared.csproj">
       <Project>{309d0a36-2455-4cc6-ab68-94e7623ec139}</Project>
       <Name>Sales.Shared</Name>

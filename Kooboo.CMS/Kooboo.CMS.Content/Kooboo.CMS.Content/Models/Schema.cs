@@ -478,7 +478,24 @@ namespace Kooboo.CMS.Content.Models
             get;
             set;
         }
-        
+
+        private const string __jsonSerializationIgnoreProperties = "Id,___EnableVersion___,_WorkflowItem_";
+
+        private string _jsonSerializationIgnoreProperties = __jsonSerializationIgnoreProperties;
+        [DataMember(Order = 13)]
+        public string JsonSerializationIgnoreProperties
+        {
+            get { return _jsonSerializationIgnoreProperties; }
+            set { _jsonSerializationIgnoreProperties = value; }
+        }
+
+        public IEnumerable<string> GetJsonSerializationIgnoreProperties()
+        {
+            var str = __jsonSerializationIgnoreProperties + "," + _jsonSerializationIgnoreProperties;
+            return string.IsNullOrWhiteSpace(str) ? null : str.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(k=> k.Trim());
+        }
+
+
         public Schema GetActualSchema()
         {
             return CacheManagerFactory.GetActual(Name, GetType().Name, this);            
