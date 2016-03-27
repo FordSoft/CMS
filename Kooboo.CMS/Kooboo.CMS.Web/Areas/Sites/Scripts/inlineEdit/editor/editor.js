@@ -173,13 +173,14 @@
                 inline: true,
                 menubar: false,
                 allow_script_urls: true,
+                forced_root_block: "", //disable root <p> tag,
                 toolbar_items_size: 'small',
-		toolbar: "save exit | searchreplace undo redo | bold italic forecolor formatselect | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | image link unlink | rawcode",
-                setup: function (ed) {                   
-		     //tinymce.ui.FloatPanel.zIndex=0x7FFFFFFF;
-                     ed.on('BeforeSetContent', function (e) {
-                         e.format = 'raw';
-                     });
+                toolbar: "save exit | searchreplace undo redo | bold italic forecolor formatselect | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | image link unlink | rawcode",
+                setup: function (ed) {
+                    //tinymce.ui.FloatPanel.zIndex=0x7FFFFFFF;
+                    ed.on('BeforeSetContent', function (e) {
+                        e.format = 'raw';
+                    });
                 },
                 verify_html: false,
                 init_instance_callback: function (ed) {
@@ -244,7 +245,8 @@
             });
         },
 
-        editable: function (edit) {console.log(edit);
+        editable: function (edit) {
+            console.log(edit);
             edit = (edit !== false);
             // prop
             try {

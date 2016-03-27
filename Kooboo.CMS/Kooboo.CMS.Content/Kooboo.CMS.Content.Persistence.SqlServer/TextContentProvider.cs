@@ -23,7 +23,6 @@ using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Common.Runtime;
 using Kooboo.CMS.Content.Query.Expressions;
-using Microsoft.OData.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OData;

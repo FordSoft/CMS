@@ -2951,4 +2951,10 @@
   <data name="The parameters must specify a comma, no spaces or special characters" xml:space="preserve">
     <value>Параметры необходимо указать через запятую, без пробелов и спец. символов</value>
   </data>
+  <data name="Go site" xml:space="preserve">
+    <value>Перейти к сайту</value>
+  </data>
+  <data name="Inlinde site editor" xml:space="preserve">
+    <value>Редактор сайта</value>
+  </data>
 </root>
