@@ -2723,4 +2723,232 @@
   <data name="Stopped site" xml:space="preserve">
     <value>Остановленный сайт</value>
   </data>
+  <data name="Inheritance" xml:space="preserve">
+    <value>Inheritance</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="One of the pages you want to unpublish is set as homepage.Are you sure you want to delete these items?" xml:space="preserve">
+    <value>One of the pages you want to unpublish is set as homepage.Are you sure you want to delete these items?</value>
+  </data>
+  <data name="One of the pages you want to unpublish is set as homepage.Are you sure you want to unpublish these items?" xml:space="preserve">
+    <value>One of the pages you want to unpublish is set as homepage.Are you sure you want to unpublish these items?</value>
+  </data>
+  <data name="Show page versions" xml:space="preserve">
+    <value>Show page versions</value>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="Are you sure you want to reset these templates?" xml:space="preserve">
+    <value>Are you sure you want to reset these templates?</value>
+  </data>
+  <data name="Copy content type" xml:space="preserve">
+    <value>Copy content type</value>
+  </data>
+  <data name="Требуется поле Tree style data." xml:space="preserve">
+    <value>Требуется поле Tree style data.</value>
+  </data>
+  <data name="Control type" xml:space="preserve">
+    <value>Control type</value>
+  </data>
+  <data name="This name is being used by other columns." xml:space="preserve">
+    <value>This name is being used by other columns.</value>
+  </data>
+  <data name="Invalid column name." xml:space="preserve">
+    <value>Invalid column name.</value>
+  </data>
+  <data name="Name of your field, it uses the same naming rule as C# veriable name." xml:space="preserve">
+    <value>Name of your field, it uses the same naming rule as C# veriable name.</value>
+  </data>
+  <data name="Descriptive label of your field on the content editing page." xml:space="preserve">
+    <value>Descriptive label of your field on the content editing page.</value>
+  </data>
+  <data name="The way that you would like to input your content." xml:space="preserve">
+    <value>The way that you would like to input your content.</value>
+  </data>
+  <data name="Data type" xml:space="preserve">
+    <value>Data type</value>
+  </data>
+  <data name="The Summary field will be used as a title or summary to describe your content item." xml:space="preserve">
+    <value>The Summary field will be used as a title or summary to describe your content item.</value>
+  </data>
+  <data name="Show this field in the CMS content list page." xml:space="preserve">
+    <value>Show this field in the CMS content list page.</value>
+  </data>
+  <data name="Input tip while users are editing content." xml:space="preserve">
+    <value>Input tip while users are editing content.</value>
+  </data>
+  <data name="Allow null" xml:space="preserve">
+    <value>Allow null</value>
+  </data>
+  <data name="Custom settings" xml:space="preserve">
+    <value>Custom settings</value>
+  </data>
+  <data name="The field Length must be a number." xml:space="preserve">
+    <value>The field Length must be a number.</value>
+  </data>
+  <data name="Basic info" xml:space="preserve">
+    <value>Basic info</value>
+  </data>
+  <data name="Content management" xml:space="preserve">
+    <value>Content management</value>
+  </data>
+  <data name="Embed content from another content folder. For example an &lt;b&gt;article&lt;/b&gt; embeds &lt;b&gt;comments&lt;/b&gt;" xml:space="preserve">
+    <value>Embed content from another content folder. For example an &lt;b&gt;article&lt;/b&gt; embeds &lt;b&gt;comments&lt;/b&gt;</value>
+  </data>
+  <data name="Sortable" xml:space="preserve">
+    <value>Sortable</value>
+  </data>
+  <data name="Hide the folder" xml:space="preserve">
+    <value>Hide the folder</value>
+  </data>
+  <data name="Hide the folder from the menu in the left slide bar when it was checked." xml:space="preserve">
+    <value>Hide the folder from the menu in the left slide bar when it was checked.</value>
+  </data>
+  <data name="Требуется поле Page size." xml:space="preserve">
+    <value>Требуется поле Page size.</value>
+  </data>
+  <data name="The item numbers on management grid page." xml:space="preserve">
+    <value>The item numbers on management grid page.</value>
+  </data>
+  <data name="Application pool name for frontend sites" xml:space="preserve">
+    <value>Application pool name for frontend sites</value>
+  </data>
+  <data name="Frontend application pool name" xml:space="preserve">
+    <value>Frontend application pool name</value>
+  </data>
+  <data name="http/https" xml:space="preserve">
+    <value>http/https</value>
+  </data>
+  <data name="Frontend default protocol" xml:space="preserve">
+    <value>Frontend default protocol</value>
+  </data>
+  <data name="Ip address work on frontend sites" xml:space="preserve">
+    <value>Ip address work on frontend sites</value>
+  </data>
+  <data name="Frontend ip site" xml:space="preserve">
+    <value>Frontend ip site</value>
+  </data>
+  <data name="Port work on frontend sites" xml:space="preserve">
+    <value>Port work on frontend sites</value>
+  </data>
+  <data name="Frontend port site " xml:space="preserve">
+    <value>Frontend port site </value>
+  </data>
+  <data name="FrontendPhysicalPath" xml:space="preserve">
+    <value>FrontendPhysicalPath</value>
+  </data>
+  <data name="Folder settings" xml:space="preserve">
+    <value>Folder settings</value>
+  </data>
+  <data name="Требуется поле StoreInAPI." xml:space="preserve">
+    <value>Требуется поле StoreInAPI.</value>
+  </data>
+  <data name="StoreInAPI" xml:space="preserve">
+    <value>StoreInAPI</value>
+  </data>
+  <data name="Требуется поле Store in API." xml:space="preserve">
+    <value>Требуется поле Store in API.</value>
+  </data>
+  <data name="Store in API" xml:space="preserve">
+    <value>Store in API</value>
+  </data>
+  <data name="If true content stored in API service else current repository." xml:space="preserve">
+    <value>If true content stored in API service else current repository.</value>
+  </data>
+  <data name="Re init table" xml:space="preserve">
+    <value>Re init table</value>
+  </data>
+  <data name="Init table" xml:space="preserve">
+    <value>Init table</value>
+  </data>
+  <data name="Content databases" xml:space="preserve">
+    <value>Content databases</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Are you sure you want to delete the content database?" xml:space="preserve">
+    <value>Are you sure you want to delete the content database?</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="JsonSerializationIgnoreProperties" xml:space="preserve">
+    <value>JsonSerializationIgnoreProperties</value>
+  </data>
+  <data name="Атрибуты которые не передаются в API." xml:space="preserve">
+    <value>Атрибуты которые не передаются в API.</value>
+  </data>
+  <data name="Игнорируемые атрибуты" xml:space="preserve">
+    <value>Игнорируемые атрибуты</value>
+  </data>
+  <data name="Параметры необходимо указать через запятую, без пробелов и спец. символов" xml:space="preserve">
+    <value>Параметры необходимо указать через запятую, без пробелов и спец. символов</value>
+  </data>
+  <data name="txt" xml:space="preserve">
+    <value>txt</value>
+  </data>
+  <data name="Требуется поле SingleChoice." xml:space="preserve">
+    <value>Требуется поле SingleChoice.</value>
+  </data>
+  <data name="Edit user" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="Users with global roles have access to all websites using the defined roles." xml:space="preserve">
+    <value>Users with global roles have access to all websites using the defined roles.</value>
+  </data>
+  <data name="Требуется поле Is administrator." xml:space="preserve">
+    <value>Требуется поле Is administrator.</value>
+  </data>
+  <data name="Требуется поле Is locked out." xml:space="preserve">
+    <value>Требуется поле Is locked out.</value>
+  </data>
+  <data name="Reset user password" xml:space="preserve">
+    <value>Reset user password</value>
+  </data>
+  <data name="&quot;Re-enter password&quot; не соответствует &quot;New password&quot;." xml:space="preserve">
+    <value>"Re-enter password" не соответствует "New password".</value>
+  </data>
+  <data name="New role" xml:space="preserve">
+    <value>New role</value>
+  </data>
+  <data name="Edit role" xml:space="preserve">
+    <value>Edit role</value>
+  </data>
+  <data name="Sites" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="Create sub site" xml:space="preserve">
+    <value>Create sub site</value>
+  </data>
+  <data name="Scripts/Themes/Custom files" xml:space="preserve">
+    <value>Scripts/Themes/Custom files</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="Search setting" xml:space="preserve">
+    <value>Search setting</value>
+  </data>
+  <data name="Ignored attributes" xml:space="preserve">
+    <value>Игнорируемые атрибуты</value>
+  </data>
+  <data name="The list of attributes to exclude when transmission service API" xml:space="preserve">
+    <value>Список атрибутов исключаемых при передачи в сервис API</value>
+  </data>
+  <data name="The parameters must specify a comma, no spaces or special characters" xml:space="preserve">
+    <value>Параметры необходимо указать через запятую, без пробелов и спец. символов</value>
+  </data>
 </root>

@@ -143,8 +143,6 @@
     <Compile Include="CultureInfoHelper.cs" />
     <Compile Include="Diagnostics\LoopWatch.cs" />
     <Compile Include="Drawing\WebPageCapture_DefaultProvider.cs" />
-    <Compile Include="Extended\LinkHelper.cs" />
-    <Compile Include="Extended\PathUtils.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="FileExtensions.cs" />

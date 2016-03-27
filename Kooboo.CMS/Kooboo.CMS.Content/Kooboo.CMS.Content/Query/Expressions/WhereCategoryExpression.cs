@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Kooboo.CMS.Content.Models;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
@@ -27,5 +28,6 @@ namespace Kooboo.CMS.Content.Query.Expressions
             this.CategoryQuery = categoryQuery;
         }
         public IContentQuery<TextContent> CategoryQuery { get; private set; }
+        public virtual OQuery OQueryExpression { get; set; }
     }
 }

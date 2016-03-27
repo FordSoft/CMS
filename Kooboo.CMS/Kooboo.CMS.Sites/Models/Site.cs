@@ -24,7 +24,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Web;
 using Kooboo.CMS.Common;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Path;
 
 namespace Kooboo.CMS.Sites.Models
 {

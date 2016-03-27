@@ -10,12 +10,14 @@ using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Form;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
+using Kooboo.CMS.Caching;
 using Kooboo.Globalization;
 namespace Kooboo.CMS.Content.Models
 {
@@ -477,6 +479,27 @@ namespace Kooboo.CMS.Content.Models
             set;
         }
 
+        private const string __jsonSerializationIgnoreProperties = "Id,___EnableVersion___,_WorkflowItem_";
+
+        private string _jsonSerializationIgnoreProperties = __jsonSerializationIgnoreProperties;
+        [DataMember(Order = 13)]
+        public string JsonSerializationIgnoreProperties
+        {
+            get { return _jsonSerializationIgnoreProperties; }
+            set { _jsonSerializationIgnoreProperties = value; }
+        }
+
+        public IEnumerable<string> GetJsonSerializationIgnoreProperties()
+        {
+            var str = __jsonSerializationIgnoreProperties + "," + _jsonSerializationIgnoreProperties;
+            return string.IsNullOrWhiteSpace(str) ? null : str.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(k=> k.Trim());
+        }
+
+
+        public Schema GetActualSchema()
+        {
+            return CacheManagerFactory.GetActual(Name, GetType().Name, this);            
+        }
     }
 
     public partial class Schema : IPersistable, IIdentifiable

@@ -75,6 +75,7 @@
             <div class="tab-content" id="contentManagement">
                 <table>
                     <tbody>
+                        @Html.EditorFor(o => o.StoreInAPI)
                         @Html.EditorFor(o => o.Sortable)
                         @Html.EditorFor(m => m.Hidden)
                         @Html.EditorFor(o => o.EnablePaging)

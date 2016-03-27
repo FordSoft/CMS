@@ -281,15 +281,15 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             ViewData["Menu"] = textFolder.GetFormTemplate(FormType.Update_Menu);
             ViewData["Template"] = textFolder.GetFormTemplate(FormType.Update);
             SetPermissionData(textFolder);
-            var content = schema.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
+            var content = textFolder.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
             if (content != null)
             {
                 content = WorkflowManager.GetPendWorkflowItemForContent(Repository, content, User.Identity.Name);
             }
+            Session.Add("EditableObject", content);
             return View(content);
         }
-
-
+        
         [Kooboo.CMS.Web.Authorizations.Authorization(AreaName = "Contents", Group = "", Name = "Content", Order = 1)]
         [HttpPost]
         public virtual ActionResult Edit(string folderName, string uuid, FormCollection form, string @return, bool localize = false)
@@ -308,9 +308,11 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
 
                     ParseCategories(form, out addedCategories, out removedCategories);
                     ContentBase content;
+                    TextContent previous = Session["EditableObject"] as TextContent;
 
-                    content = TextContentManager.Update(Repository, textFolder, uuid, form,
-                    Request.Files, DateTime.UtcNow, addedCategories, removedCategories, User.Identity.Name);
+                    TextContentManager.Update(Repository, textFolder, uuid, form,
+                        Request.Files, DateTime.UtcNow, addedCategories, removedCategories, User.Identity.Name,
+                        previous: previous);
 
                     if (localize == true)
                     {

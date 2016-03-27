@@ -158,12 +158,13 @@ namespace Kooboo.CMS.Content.Services
             return Update(repository, folder, uuid, values, null, DateTime.UtcNow, null, null, userid);
         }
         public virtual ContentBase Update(Repository repository, TextFolder folder, string uuid, NameValueCollection values, HttpFileCollectionBase files,
-         DateTime modificationDate, IEnumerable<TextContent> addedCateogries, IEnumerable<TextContent> removedCategories, string userid = "", bool enableVersion = true)
+            DateTime modificationDate, IEnumerable<TextContent> addedCateogries, IEnumerable<TextContent> removedCategories, string userid = "", bool enableVersion = true,
+            TextContent previous = null)
         {
-
             var textFolder = (TextFolder)folder.AsActual();
-            var schema = new Schema(repository, textFolder.SchemaName);
-            var textContent = textFolder.CreateQuery().WhereEquals("UUID", uuid).First();
+            var schema = new Schema(repository, textFolder.SchemaName);            
+
+            var textContent = previous ?? textFolder.CreateQuery().WhereEquals("UUID", uuid).First();
             var old = new TextContent(textContent);
 
             textContent = Binder.Update(schema, textContent, values);
@@ -190,7 +191,25 @@ namespace Kooboo.CMS.Content.Services
             //SaveFiles(textContent, schema, files);
             EventBus.Content.ContentEvent.Fire(ContentAction.PreUpdate, textContent);
 
-            TextContentProvider.Update(textContent, old);
+            //TODO:FS Update only dirty entity
+            //
+            /*
+            if (previous != null)
+            {
+                var _old = new TextContent(old);
+                _old["Id"] = previous["Id"];
+
+                if (!previous.OrderBy(c => c.Key).SequenceEqual(_old.OrderBy(c => c.Key)))
+                {
+                    TextContentProvider.Update(textContent, old);
+                }
+            }
+            else
+            */
+            {
+                TextContentProvider.Update(textContent, old);
+            }
+
             if (removedCategories != null)
             {
                 RemoveCategories(repository, textContent, removedCategories.ToArray());

@@ -13,7 +13,7 @@ using System.Text;
 using Kooboo.Web.Url;
 using System.IO;
 using System.Web;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Path;
 using Kooboo.CMS.Common;
 
 namespace Kooboo.CMS.Content.Models.Paths

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
@@ -22,5 +23,6 @@ namespace Kooboo.CMS.Content.Query.Expressions
         }
         public IWhereExpression Left { get; private set; }
         public IWhereExpression Right { get; private set; }
+        public virtual OQuery OQueryExpression { get; set; }
     }
 }

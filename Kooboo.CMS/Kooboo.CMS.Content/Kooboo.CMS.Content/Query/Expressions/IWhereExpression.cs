@@ -10,11 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
     public interface IWhereExpression : IExpression
     {
-
     }
 }

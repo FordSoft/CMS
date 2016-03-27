@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
@@ -23,7 +24,7 @@ namespace Kooboo.CMS.Content.Query.Expressions
         public WhereContainsExpression(IExpression expression, string fieldName, object value)
             : base(expression, fieldName, value)
         {
-
+            OQueryExpression = OQuery.From(null).Where(string.Format("item => item.{0}.Contains('{1}')", fieldName, value));
         }
 
     }

@@ -14,7 +14,7 @@ using System.IO;
 using Kooboo.Runtime.Serialization;
 using System.Runtime.Serialization;
 using System.Web;
-using Kooboo.Extended;
+using Kooboo.Extensions.Cluster.Path;
 
 namespace Kooboo.CMS.Content.Persistence.SqlServer
 {

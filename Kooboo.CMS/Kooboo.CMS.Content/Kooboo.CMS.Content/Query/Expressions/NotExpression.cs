@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OData;
 
 namespace Kooboo.CMS.Content.Query.Expressions
 {
@@ -20,5 +21,6 @@ namespace Kooboo.CMS.Content.Query.Expressions
             InnerExpression = expression;
         }
         public IWhereExpression InnerExpression { get; private set; }
+        public virtual OQuery OQueryExpression { get; set; }
     }
 }

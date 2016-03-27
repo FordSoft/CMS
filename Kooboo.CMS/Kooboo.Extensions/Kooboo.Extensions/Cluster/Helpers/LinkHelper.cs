@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Kooboo.Extended
+namespace Kooboo.Extensions.Cluster.Helpers
 {
     public class LinkHelper
     {

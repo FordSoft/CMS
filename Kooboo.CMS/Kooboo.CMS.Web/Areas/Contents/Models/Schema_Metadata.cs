@@ -44,5 +44,11 @@ namespace Kooboo.CMS.Web.Areas.Contents.Models
             get;
             set;
         }
+
+        [RegularExpression(RegexPatterns.FileName, ErrorMessage = "The parameters must specify a comma, no spaces or special characters")]
+        [DisplayName("Ignored attributes")]
+        [Description("The list of attributes to exclude when transmission service API")]
+        public string JsonSerializationIgnoreProperties { get; set; }
+
     }
 }

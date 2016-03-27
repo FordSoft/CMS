@@ -13,6 +13,7 @@ using System.Text;
 using Kooboo.CMS.Content.Models;
 using Kooboo.CMS.Content.Query.Expressions;
 using Kooboo.CMS.Content.Persistence;
+using OData;
 
 namespace Kooboo.CMS.Content.Query
 {
@@ -57,11 +58,29 @@ namespace Kooboo.CMS.Content.Query
         public IContentQuery<T> Skip(int count)
         {
             var expression = new SkipExpression(this.Expression, count);
+
+            //
+            if (this is TextContentQuery)
+            {
+                expression.OQueryExpression = OQuery
+                    .From((this as TextContentQuery).Schema.Name)
+                    .Skip(count);
+            }
+
             return this.Create(expression);
         }
         public IContentQuery<T> Take(int count)
         {
             var expression = new TakeExpression(this.Expression, count);
+
+            //
+            if (this is TextContentQuery)
+            {
+                expression.OQueryExpression = OQuery
+                    .From((this as TextContentQuery).Schema.Name)
+                    .Take(count);
+            }
+
             return this.Create(expression);
         }
         public IContentQuery<T> OrderBy(string fieldName)
@@ -143,6 +162,14 @@ namespace Kooboo.CMS.Content.Query
         public IContentQuery<T> WhereEquals(string fieldName, object value)
         {
             var expression = new WhereEqualsExpression(this.Expression, fieldName, value);
+            //
+            if (this is TextContentQuery)
+            {
+                expression.OQueryExpression = OQuery
+                    .From((this as TextContentQuery).Schema.Name)
+                    .Where(string.Format("item=> item.{0} eq '{1}'", fieldName, value));
+
+            }
             return this.Create(expression);
         }
         public IContentQuery<T> WhereNotEquals(string fieldName, object value)
